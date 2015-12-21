@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */; };
+		4AA3AAF41C285A0800BD3B6F /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF31C285A0800BD3B6F /* SKTAudio.swift */; };
 		4ACDC7751C280C9E00DB6FF6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */; };
 		4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDC7781C280D6D00DB6FF6 /* GameKitHelper.swift */; };
 		4ACDC77B1C2821DD00DB6FF6 /* MonkeyJumpNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDC77A1C2821DC00DB6FF6 /* MonkeyJumpNavigationController.swift */; };
 		61471E2C1A17A8CD00A4384F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61471E2A1A17A8CD00A4384F /* LaunchScreen.xib */; };
 		61471E311A17CC5800A4384F /* characteranimations@3x.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 61471E301A17CC5800A4384F /* characteranimations@3x.atlas */; };
 		61471E681A17CF1E00A4384F /* characteranimations@2x.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 61471E671A17CF1E00A4384F /* characteranimations@2x.atlas */; };
-		617239B9183AA0E8007C5C15 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 617239B8183AA0E8007C5C15 /* SKTAudio.m */; };
 		61AE8C64183A4EB8005BA2EB /* GameElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE8C63183A4EB8005BA2EB /* GameElement.m */; };
 		61AE8C67183A51B8005BA2EB /* Monkey.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE8C66183A51B8005BA2EB /* Monkey.m */; };
 		61AE8C6D183A55B0005BA2EB /* Monkey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61AE8C69183A55B0005BA2EB /* Monkey.plist */; };
@@ -59,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuViewController.swift; sourceTree = "<group>"; };
+		4AA3AAF31C285A0800BD3B6F /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
 		4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4ACDC7771C280D6C00DB6FF6 /* MonkeyJump-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MonkeyJump-Bridging-Header.h"; path = "/Users/phil/developer/tutorials/ios/rw-ios6/6-gamekit/MonkeyJump/MonkeyJump/MonkeyJump-Bridging-Header.h"; sourceTree = "<absolute>"; };
 		4ACDC7781C280D6D00DB6FF6 /* GameKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameKitHelper.swift; sourceTree = "<group>"; };
@@ -66,8 +67,6 @@
 		61471E2B1A17A8CD00A4384F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		61471E301A17CC5800A4384F /* characteranimations@3x.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "characteranimations@3x.atlas"; sourceTree = "<group>"; };
 		61471E671A17CF1E00A4384F /* characteranimations@2x.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "characteranimations@2x.atlas"; sourceTree = "<group>"; };
-		617239B7183AA0E8007C5C15 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
-		617239B8183AA0E8007C5C15 /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
 		61AE8C62183A4EB8005BA2EB /* GameElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameElement.h; sourceTree = "<group>"; };
 		61AE8C63183A4EB8005BA2EB /* GameElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameElement.m; sourceTree = "<group>"; };
 		61AE8C65183A51B8005BA2EB /* Monkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monkey.h; sourceTree = "<group>"; };
@@ -149,8 +148,7 @@
 		617239B6183AA0BD007C5C15 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				617239B7183AA0E8007C5C15 /* SKTAudio.h */,
-				617239B8183AA0E8007C5C15 /* SKTAudio.m */,
+				4AA3AAF31C285A0800BD3B6F /* SKTAudio.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -417,11 +415,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				61AE8C7A183A60FC005BA2EB /* Snake.m in Sources */,
-				617239B9183AA0E8007C5C15 /* SKTAudio.m in Sources */,
 				61AE8C7D183A6113005BA2EB /* HedgeHog.m in Sources */,
 				61AE8C67183A51B8005BA2EB /* Monkey.m in Sources */,
 				61AE8C80183A611E005BA2EB /* Croc.m in Sources */,
 				61D2ABA31839304200941988 /* AppDelegate.m in Sources */,
+				4AA3AAF41C285A0800BD3B6F /* SKTAudio.swift in Sources */,
 				61D2ABCF1839339500941988 /* GameViewController.m in Sources */,
 				4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */,
 				61D2ABDC183944E500941988 /* GameScene.m in Sources */,

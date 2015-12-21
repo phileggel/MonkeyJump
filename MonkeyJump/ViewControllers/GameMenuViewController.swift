@@ -17,8 +17,8 @@ class GameMenuViewController: UIViewController {
 
         navigationController?.navigationBarHidden = true
         
-        if !SKTAudio.sharedInstance().isBackgroundMusicPlaying() {
-            SKTAudio.sharedInstance().playBackgroundMusic("background_track.aiff")
+        if !MonkeyAudio.sharedInstance.backgroundMusicPlaying {
+            MonkeyAudio.sharedInstance.playBackgroundMusic("background_track.aiff")
         }
 
     }
