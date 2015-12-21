@@ -30,6 +30,8 @@ class GameMenuViewController: UIViewController {
     }
 
     @IBAction func gameCenterButtonPressed(sender: UIButton) {
-        print("Game center button pressed")
+        
+        GameKitHelper.sharedInstance.showGameCenterViewController(self)
+        
     }
 }
