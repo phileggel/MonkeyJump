@@ -13,12 +13,14 @@ import GameKit
 protocol GameKitHelperProtocol {
     // Optional protocol only available with @objc
     func onAchievementsLoaded(achievements: NSDictionary)
+    func onScoreSubmitted(success: Bool)
 }
 
 extension GameKitHelperProtocol {
     // Use extension to declare a default func behavior instead
     // of making it optional
     func onAchievementsLoaded(achievements: NSDictionary) {}
+    func onScoreSubmitted(success: Bool) {}
 }
 
 
@@ -85,20 +87,48 @@ class GameKitHelper: NSObject {
 
     }
 
+    
+    /// Show Game Center
     func showGameCenterViewController(controller: UIViewController) {
         
-        //1 create GameCenterViewController instance
+        //1 Create GameCenterViewController instance
         let gameCenterViewController = GKGameCenterViewController()
         
-        //2 set gameCenterDelegate
+        //2 Set gameCenterDelegate
         gameCenterViewController.gameCenterDelegate = self
         
-        //3 view state, we can also show leaderboards, achievements or challenges
+        //3 View state, we can also show leaderboards, achievements or challenges
         gameCenterViewController.viewState = .Default
         
-        //4 present the GameCenterViewController
+        //4 Present the GameCenterViewController
         controller.presentViewController(gameCenterViewController, animated: true, completion: nil)
         
+    }
+    
+    /// Scores
+    func submitScore(score: Int64, leaderBoardID: String) {
+        
+        //1 Check if game center features is enabled
+        if !gameCenterFeaturesEnabled {
+            print("Player not authenticated!")
+            return
+        }
+        
+        //2 Create a GKScore object
+        let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
+        
+        //3 Set the score value
+        gkScore.value = score
+        gkScore.context = 0
+        
+        //4 Send the score to Game Center
+        GKScore.reportScores([gkScore]) { [weak self] (error) -> Void in
+            
+            self?.setLastError(error)
+            let success = (error == nil)
+            
+            self?.delegate?.onScoreSubmitted(success)
+        }
     }
     
 }
@@ -110,6 +140,4 @@ extension GameKitHelper: GKGameCenterControllerDelegate {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
 }
-

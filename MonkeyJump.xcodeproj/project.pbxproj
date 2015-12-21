@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E271C286C0A0045C13C /* Constant.swift */; };
 		4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */; };
-		4AA3AAF41C285A0800BD3B6F /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF31C285A0800BD3B6F /* SKTAudio.swift */; };
+		4AA3AAF41C285A0800BD3B6F /* MonkeyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF31C285A0800BD3B6F /* MonkeyAudio.swift */; };
 		4ACDC7751C280C9E00DB6FF6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */; };
 		4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDC7781C280D6D00DB6FF6 /* GameKitHelper.swift */; };
 		4ACDC77B1C2821DD00DB6FF6 /* MonkeyJumpNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDC77A1C2821DC00DB6FF6 /* MonkeyJumpNavigationController.swift */; };
@@ -58,8 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A2B2E271C286C0A0045C13C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuViewController.swift; sourceTree = "<group>"; };
-		4AA3AAF31C285A0800BD3B6F /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		4AA3AAF31C285A0800BD3B6F /* MonkeyAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonkeyAudio.swift; sourceTree = "<group>"; };
 		4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4ACDC7771C280D6C00DB6FF6 /* MonkeyJump-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MonkeyJump-Bridging-Header.h"; path = "/Users/phil/developer/tutorials/ios/rw-ios6/6-gamekit/MonkeyJump/MonkeyJump/MonkeyJump-Bridging-Header.h"; sourceTree = "<absolute>"; };
 		4ACDC7781C280D6D00DB6FF6 /* GameKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameKitHelper.swift; sourceTree = "<group>"; };
@@ -148,7 +150,8 @@
 		617239B6183AA0BD007C5C15 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				4AA3AAF31C285A0800BD3B6F /* SKTAudio.swift */,
+				4AA3AAF31C285A0800BD3B6F /* MonkeyAudio.swift */,
+				4A2B2E271C286C0A0045C13C /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -414,12 +417,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */,
 				61AE8C7A183A60FC005BA2EB /* Snake.m in Sources */,
 				61AE8C7D183A6113005BA2EB /* HedgeHog.m in Sources */,
 				61AE8C67183A51B8005BA2EB /* Monkey.m in Sources */,
 				61AE8C80183A611E005BA2EB /* Croc.m in Sources */,
 				61D2ABA31839304200941988 /* AppDelegate.m in Sources */,
-				4AA3AAF41C285A0800BD3B6F /* SKTAudio.swift in Sources */,
+				4AA3AAF41C285A0800BD3B6F /* MonkeyAudio.swift in Sources */,
 				61D2ABCF1839339500941988 /* GameViewController.m in Sources */,
 				4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */,
 				61D2ABDC183944E500941988 /* GameScene.m in Sources */,
