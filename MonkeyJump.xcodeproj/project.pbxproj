@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */; };
 		4ACDC7751C280C9E00DB6FF6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */; };
 		4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDC7781C280D6D00DB6FF6 /* GameKitHelper.swift */; };
 		4ACDC77B1C2821DD00DB6FF6 /* MonkeyJumpNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDC77A1C2821DC00DB6FF6 /* MonkeyJumpNavigationController.swift */; };
@@ -41,7 +42,6 @@
 		61D2ABC11839304200941988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 61D2ABBF1839304200941988 /* InfoPlist.strings */; };
 		61D2ABC31839304200941988 /* MonkeyJumpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D2ABC21839304200941988 /* MonkeyJumpTests.m */; };
 		61D2ABCF1839339500941988 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D2ABCD1839339500941988 /* GameViewController.m */; };
-		61D2ABD51839374100941988 /* GameMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D2ABD41839374100941988 /* GameMenuViewController.m */; };
 		61D2ABD81839406700941988 /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D2ABD71839406700941988 /* GameOverViewController.m */; };
 		61D2ABDC183944E500941988 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D2ABDA183944E500941988 /* GameScene.m */; };
 		61D2ABE21839486B00941988 /* characteranimations.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 61D2ABE11839486B00941988 /* characteranimations.atlas */; };
@@ -58,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuViewController.swift; sourceTree = "<group>"; };
 		4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4ACDC7771C280D6C00DB6FF6 /* MonkeyJump-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MonkeyJump-Bridging-Header.h"; path = "/Users/phil/developer/tutorials/ios/rw-ios6/6-gamekit/MonkeyJump/MonkeyJump/MonkeyJump-Bridging-Header.h"; sourceTree = "<absolute>"; };
 		4ACDC7781C280D6D00DB6FF6 /* GameKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameKitHelper.swift; sourceTree = "<group>"; };
@@ -104,8 +105,6 @@
 		61D2ABC21839304200941988 /* MonkeyJumpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonkeyJumpTests.m; sourceTree = "<group>"; };
 		61D2ABCD1839339500941988 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		61D2ABCE1839339500941988 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		61D2ABD31839374100941988 /* GameMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuViewController.h; sourceTree = "<group>"; };
-		61D2ABD41839374100941988 /* GameMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuViewController.m; sourceTree = "<group>"; };
 		61D2ABD61839406700941988 /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
 		61D2ABD71839406700941988 /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
 		61D2ABDA183944E500941988 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
@@ -285,8 +284,7 @@
 				4ACDC77A1C2821DC00DB6FF6 /* MonkeyJumpNavigationController.swift */,
 				61D2ABD61839406700941988 /* GameOverViewController.h */,
 				61D2ABD71839406700941988 /* GameOverViewController.m */,
-				61D2ABD31839374100941988 /* GameMenuViewController.h */,
-				61D2ABD41839374100941988 /* GameMenuViewController.m */,
+				4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */,
 				61D2ABCE1839339500941988 /* GameViewController.h */,
 				61D2ABCD1839339500941988 /* GameViewController.m */,
 			);
@@ -428,10 +426,10 @@
 				4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */,
 				61D2ABDC183944E500941988 /* GameScene.m in Sources */,
 				61AE8C64183A4EB8005BA2EB /* GameElement.m in Sources */,
+				4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */,
 				4ACDC77B1C2821DD00DB6FF6 /* MonkeyJumpNavigationController.swift in Sources */,
 				61D2ABD81839406700941988 /* GameOverViewController.m in Sources */,
 				61D2AB9F1839304200941988 /* main.m in Sources */,
-				61D2ABD51839374100941988 /* GameMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

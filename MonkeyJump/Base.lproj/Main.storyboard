@@ -27,7 +27,7 @@
         <!--Game Menu View Controller-->
         <scene sceneID="EXa-cG-iXt">
             <objects>
-                <viewController storyboardIdentifier="GameMenuViewController" id="kO3-8l-aSw" customClass="GameMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameMenuViewController" id="kO3-8l-aSw" customClass="GameMenuViewController" customModule="MonkeyJump" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lwk-iR-Vrn"/>
                         <viewControllerLayoutGuide type="bottom" id="Rwi-GW-n1O"/>
