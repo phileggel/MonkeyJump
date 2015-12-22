@@ -22,8 +22,10 @@ class GameOverViewController: UIViewController {
     
     // MARK: - private properties
     var score = 0 {
-        willSet {
-            scoreLabel.text = "YOUR SCORE: \(score)"
+        didSet {
+            if let _ = scoreLabel {
+                scoreLabel.text = "YOUR SCORE: \(score)"
+            }
         }
     }
     

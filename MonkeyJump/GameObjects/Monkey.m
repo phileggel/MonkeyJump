@@ -15,8 +15,7 @@
     SKAction *_walkAnimation, *_jumpAnimation;
 }
 
-+(instancetype)monkey
-{
++(instancetype)monkey {
     Monkey *monkey = [Monkey spriteNodeWithImageNamed:@"monkey_run1.png"];
     return monkey;
 }

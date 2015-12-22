@@ -20,5 +20,5 @@ NS_ENUM(NSUInteger, MonkeyState) {
 @property (nonatomic) int lives;
 @property (nonatomic, readwrite) enum MonkeyState state;
 
-+ (instancetype)monkey;
++ (id)monkey;
 @end

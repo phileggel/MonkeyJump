@@ -38,9 +38,9 @@ class GameScene: SKScene {
     private var isInvincible = false
     private var previousTime: NSTimeInterval = 0
     private var distance: CGFloat = 0
+    private var previousDistance: Int = 0
     private var nextSpawn: Double = 0
     private var difficultyMeasure: CGFloat = 1
-    
     
     
     override init(size: CGSize) {
@@ -50,14 +50,15 @@ class GameScene: SKScene {
         background1 = SKSpriteNode(imageNamed: "bg_repeat")
         background1.size = CGSize(width: background1.size.width, height: size.height)
         background1.position = CGPoint(x: background1.size.width / 2, y: size.height / 2)
+        background1.zPosition = -1
         
         background2 = SKSpriteNode(imageNamed: "bg_repeat")
         background2.size = CGSize(width: background2.size.width, height: size.height)
         background2.position = CGPoint(x: background2.size.width + background2.size.width / 2, y: size.height / 2)
+        background2.zPosition = -1
         
-        monkey = Monkey()
+        monkey = Monkey.monkey() as! Monkey
         monkey.position = CGPoint(x: 0.125 * size.width, y: 0.260 * size.height)
-        monkey.state = .Walking
         
         distanceLabel = SKLabelNode(fontNamed: "Arial")
         distanceLabel.fontSize = 15
@@ -78,6 +79,8 @@ class GameScene: SKScene {
         addChild(monkey)
         addChild(distanceLabel)
         addChild(livesLabel)
+        
+        monkey.state = .Walking
         
         userInteractionEnabled = true
     }
@@ -117,7 +120,12 @@ class GameScene: SKScene {
         background2.position = CGPoint(x: background2.position.x + xOffset, y: background2.position.y)
         
         distance += GameScene.monkeySpeed * deltaTime
-        distanceLabel.text = "Distance: \(Int(distance))"
+        let distanceToShow = Int(distance)
+        if distanceToShow > previousDistance {
+            let messageToShow = "Distance: \(distanceToShow)"
+            distanceLabel.text = messageToShow
+            previousDistance = distanceToShow
+        }
         
         let curTime = NSDate().timeIntervalSince1970
         if curTime > nextSpawn {
@@ -149,7 +157,7 @@ class GameScene: SKScene {
             nextSpawn = curTime + Double(randomInterval)
             
             if difficultyMeasure < 2.22 {
-                difficultyMeasure *= 0.122
+                difficultyMeasure += 0.122
             }
         }
         
@@ -158,8 +166,10 @@ class GameScene: SKScene {
             for sprite in children {
                 
                 if sprite is Monkey {
+                    
                     continue
-                } else {
+                
+                } else if sprite is Snake || sprite is Croc || sprite is HedgeHog {
                     
                     let insetAmtX: CGFloat = 10
                     let insetAmtY: CGFloat = 10

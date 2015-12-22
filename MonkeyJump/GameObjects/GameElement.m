@@ -52,12 +52,14 @@
     
     NSString *atlasName = @"characteranimations";
     
-    if (IS_RETINA) {
-        atlasName = [NSString stringWithFormat:@"%@@2x", atlasName];
-    }
+    
     if (IS_IPHONE_6P) {
         atlasName = [NSString stringWithFormat:@"%@@3x", atlasName];
     }
+    else if (IS_RETINA) {
+        atlasName = [NSString stringWithFormat:@"%@@2x", atlasName];
+    }
+
     
     SKTextureAtlas *gameAtlas = [SKTextureAtlas atlasNamed:atlasName];
     for (NSString *frameNumber in animationFrameNumbers) {
