@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Raywenderlich. All rights reserved.
 //
 
-NS_ENUM(NSUInteger, GameElementType) {
+@import SpriteKit;
+
+typedef NS_ENUM(NSUInteger, GameElementType) {
     kMonkey,
     kSnake,
     kCroc,
     kHedgeHog
 };
-
-@import SpriteKit;
 
 @interface GameElement : SKSpriteNode
 @property (nonatomic, readwrite) enum GameElementType gameElementType;

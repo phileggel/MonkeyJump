@@ -7,7 +7,6 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
 #import "GameOverViewController.h"
 
 @interface GameViewController()<GameSceneProtocol>
