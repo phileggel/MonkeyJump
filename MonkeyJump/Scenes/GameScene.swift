@@ -98,7 +98,7 @@ class GameScene: SKScene {
         }
         
         let deltaTime = CGFloat(currentTime - previousTime)
-        
+        previousTime = currentTime
         let xOffset = GameScene.backgroundScrollSpeed * -1 * deltaTime
         
         if background1.position.x < (background1.size.width / 2) * -1 {

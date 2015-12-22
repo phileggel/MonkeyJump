@@ -8,7 +8,7 @@
         <!--Game View Controller-->
         <scene sceneID="CtS-rA-C9T">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" id="LVB-YS-i5n" customClass="GameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="LVB-YS-i5n" customClass="GameViewController" customModule="MonkeyJump" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2D1-p4-WS5"/>
                         <viewControllerLayoutGuide type="bottom" id="3fQ-la-JLV"/>
@@ -91,7 +91,7 @@
         <!--Game Over View Controller-->
         <scene sceneID="SCY-em-Afb">
             <objects>
-                <viewController storyboardIdentifier="GameOverViewController" id="W9N-v7-YWn" customClass="GameOverViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameOverViewController" id="W9N-v7-YWn" customClass="GameOverViewController" customModule="MonkeyJump" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Tr-4j-NHp"/>
                         <viewControllerLayoutGuide type="bottom" id="SUp-qc-bNJ"/>
