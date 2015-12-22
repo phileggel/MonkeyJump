@@ -38,7 +38,6 @@ class GameScene: SKScene {
     private var isInvincible = false
     private var previousTime: NSTimeInterval = 0
     private var distance: CGFloat = 0
-    private var previousDistance: Int = 0
     private var nextSpawn: Double = 0
     private var difficultyMeasure: CGFloat = 1
     
@@ -120,12 +119,7 @@ class GameScene: SKScene {
         background2.position = CGPoint(x: background2.position.x + xOffset, y: background2.position.y)
         
         distance += GameScene.monkeySpeed * deltaTime
-        let distanceToShow = Int(distance)
-        if distanceToShow > previousDistance {
-            let messageToShow = "Distance: \(distanceToShow)"
-            distanceLabel.text = messageToShow
-            previousDistance = distanceToShow
-        }
+        distanceLabel.text = "Distance: \(Int(distance))"
         
         let curTime = NSDate().timeIntervalSince1970
         if curTime > nextSpawn {
@@ -237,7 +231,10 @@ class GameScene: SKScene {
     
     
     func monkeyDead() {
+        
+        GameKitHelper.sharedInstance.submitScore(Int64(distance), leaderBoardID: AppConstant.highScoreLeaderBoardID)
         gameSceneDelegate?.gameOverWithScore(Int(distance))
+    
     }
 
 }

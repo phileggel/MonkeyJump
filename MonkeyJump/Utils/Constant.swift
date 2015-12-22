@@ -8,5 +8,5 @@
 
 
 struct AppConstant {
-    static let highScoreLeaderBoardID = "HighScores"
+    static let highScoreLeaderBoardID = "com.phileagledev.MonkeyJump.HighScores"
 }
