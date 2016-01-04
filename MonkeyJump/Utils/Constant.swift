@@ -9,4 +9,6 @@
 
 struct AppConstant {
     static let highScoreLeaderBoardID = "com.phileagledev.MonkeyJump.HighScores"
+    static let achievementsFilename = "Achievements.plist"
+    static let achievementsResourceName = "Achievements"
 }

@@ -2,7 +2,12 @@
 //  GameScene.swift
 //  MonkeyJump
 //
-//  Created by philippe eggel on 21/12/2015.
+//  This is a main MonkeyJump's SpriteKit Game View
+//  Game actions and interactions are provided here as well
+//  as the drawing elements
+//
+//  Original GameScene from RayWenderlich Tutorial 
+//  Translated to swift by philippe eggel on 21/12/2015.
 //  Copyright © 2015 PhilEagleDev.com. All rights reserved.
 //
 
@@ -91,7 +96,6 @@ class GameScene: SKScene {
     
     override func update(currentTime: NSTimeInterval) {
         if monkey.state == .Dead {
-            print("Monkey dead")
             return
         }
         
@@ -233,8 +237,9 @@ class GameScene: SKScene {
     func monkeyDead() {
         
         GameKitHelper.sharedInstance.submitScore(Int64(distance), leaderBoardID: AppConstant.highScoreLeaderBoardID)
+        MonkeyGameKitHelper.reportAchievementsForDistance(Int64(distance))
         gameSceneDelegate?.gameOverWithScore(Int(distance))
-    
+
     }
 
 }

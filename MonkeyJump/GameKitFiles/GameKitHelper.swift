@@ -2,6 +2,13 @@
 //  GameKitHelper.swift
 //  MonkeyJump
 //
+//  This is a generic GameKit helper class.
+//  It is not tied to the Monkey Game Model, and then can be used with any other game models.
+//
+//  It provides some useful methods to interact with GameKit framework.
+//  It also provides a protocol wrapper for callback Methods
+//  and use notification to notify the authentication controller availability.
+//
 //  Created by philippe eggel on 21/12/2015.
 //  Copyright © 2015 PhilEagleDev.com. All rights reserved.
 //
@@ -34,14 +41,16 @@ class GameKitHelper: NSObject {
     
     // MARK: - public properties
     var delegate: GameKitHelperProtocol?
+    
+    // This property holds the authenticationViewController provided by the Game Center API's
     private(set) var authenticationViewController: UIViewController?
     
-    // This property holds the last known error
-    // that occured while using the Game Center API's
+    // This property holds the last known error that occured while using the Game Center API's
     private(set) var lastError: NSError?
     
     // It is possible to use setLastError because
     // GameKitHelper is not declared as @objc for the moment
+    // TODO: modify this implementation to make it more readable
     private func setLastError(error: NSError?) {
         lastError = error?.copy() as? NSError
         if let lastError = lastError {
@@ -186,6 +195,7 @@ class GameKitHelper: NSObject {
         
         var foundAchievememt: GKAchievement
         if let achievement = achievements![identifier] {
+            print("actual distance for \(achievement.identifier) is \(achievement.percentComplete)")
             foundAchievememt = achievement
         }
         else {

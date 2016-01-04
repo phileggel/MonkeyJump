@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E271C286C0A0045C13C /* Constant.swift */; };
 		4A2B2E2A1C286D4E0045C13C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E291C286D4E0045C13C /* GameScene.swift */; };
+		4AA196E31C3A923000E6FB9D /* Achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA196E21C3A923000E6FB9D /* Achievements.plist */; };
+		4AA196E51C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA196E41C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift */; };
 		4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */; };
 		4AA3AAF41C285A0800BD3B6F /* MonkeyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF31C285A0800BD3B6F /* MonkeyAudio.swift */; };
 		4ACDC7751C280C9E00DB6FF6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		4A2B2E271C286C0A0045C13C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4A2B2E291C286D4E0045C13C /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		4AA196E21C3A923000E6FB9D /* Achievements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Achievements.plist; sourceTree = "<group>"; };
+		4AA196E41C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonkeyGameKitHelper.swift; sourceTree = "<group>"; };
 		4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuViewController.swift; sourceTree = "<group>"; };
 		4AA3AAF31C285A0800BD3B6F /* MonkeyAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonkeyAudio.swift; sourceTree = "<group>"; };
 		4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -140,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				4ACDC7781C280D6D00DB6FF6 /* GameKitHelper.swift */,
+				4AA196E41C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift */,
 			);
 			path = GameKitFiles;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				61AE8C6A183A55B0005BA2EB /* HedgeHog.plist */,
 				61AE8C6B183A55B0005BA2EB /* Snake.plist */,
 				61AE8C6C183A55B0005BA2EB /* Croc.plist */,
+				4AA196E21C3A923000E6FB9D /* Achievements.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				61AE8C76183A56CE005BA2EB /* background_track.aiff in Resources */,
 				61471E681A17CF1E00A4384F /* characteranimations@2x.atlas in Resources */,
 				61D2ABE21839486B00941988 /* characteranimations.atlas in Resources */,
+				4AA196E31C3A923000E6FB9D /* Achievements.plist in Resources */,
 				61AE8C70183A55B0005BA2EB /* Croc.plist in Resources */,
 				61D2AB9D1839304200941988 /* InfoPlist.strings in Resources */,
 				61D2ABB01839304200941988 /* Images.xcassets in Resources */,
@@ -420,6 +427,7 @@
 				61D2ABA31839304200941988 /* AppDelegate.m in Sources */,
 				4AA3AAF41C285A0800BD3B6F /* MonkeyAudio.swift in Sources */,
 				4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */,
+				4AA196E51C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift in Sources */,
 				61AE8C64183A4EB8005BA2EB /* GameElement.m in Sources */,
 				4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */,
 				4AF7D1311C299F8800A2A90D /* GameViewController.swift in Sources */,
