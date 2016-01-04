@@ -195,7 +195,6 @@ class GameKitHelper: NSObject {
         
         var foundAchievememt: GKAchievement
         if let achievement = achievements![identifier] {
-            print("actual distance for \(achievement.identifier) is \(achievement.percentComplete)")
             foundAchievememt = achievement
         }
         else {
@@ -205,6 +204,33 @@ class GameKitHelper: NSObject {
         }
         
         return foundAchievememt
+    }
+    
+    
+    /// Share Score on Social Networks
+    func shareScore(score: Int64, leaderBoardID: String, inParentViewController parentViewController: UIViewController) {
+        
+        let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
+        gkScore.value = score
+        
+        let shareScoreViewController = UIActivityViewController(activityItems: [gkScore], applicationActivities: nil)
+        
+        // use of another method than tutorial because the previous tutorial shorter method was deprecated
+        // the activityViewController is a highlevel interface which provide the ability to share items
+        // but also to interact with other installed applications
+        // In the later case we may receive modified datas through the returnedItems array
+        // 
+        // activityViewController is weak to prevent owning cycle. The owner will be the current controller
+        // if it is dismiss, the activityViewController should be dismissed by its parent
+        shareScoreViewController.completionWithItemsHandler = { [weak shareScoreViewController]
+            (activityType, completed, returnedItems, error) -> Void in
+            
+            if completed {
+                shareScoreViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        
+        parentViewController.presentViewController(shareScoreViewController, animated: true, completion: nil)
     }
     
 }
