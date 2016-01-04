@@ -31,7 +31,7 @@ class GameMenuViewController: UIViewController {
 
     @IBAction func gameCenterButtonPressed(sender: UIButton) {
         
-        GameKitHelper.sharedInstance.showGameCenterViewController(self)
+        GameKitHelper.sharedInstance.presentGameCenterViewControllerFromViewController(self)
         
     }
 }

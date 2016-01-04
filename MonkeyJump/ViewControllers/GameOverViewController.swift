@@ -44,8 +44,8 @@ class GameOverViewController: UIViewController {
         case GameOverViewController.mainMenuButtonTag:
             navigationController?.popToRootViewControllerAnimated(false)
         case GameOverViewController.shareButtonTag:
-            GameKitHelper.sharedInstance.shareScore(Int64(score),
-                leaderBoardID: AppConstant.highScoreLeaderBoardID, inParentViewController: self)
+            GameKitHelper.sharedInstance.presentShareScoreControllerFromViewController(self, score: Int64(score),
+                leaderBoardID: AppConstant.highScoreLeaderBoardID)
         default:
             fatalError("buttonPressed event not available")
         }

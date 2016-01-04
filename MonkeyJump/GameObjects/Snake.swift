@@ -12,13 +12,13 @@ import Foundation
 
 class Snake: GameElement {
     
-    var walkAnim: SKAction!
+    var crawlAnim: SKAction!
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
         
         self.gameElementType = .Snake
-        self.walkAnim = self.loadPlistForAnimationName("walkAnim", andClassName: String(self.dynamicType))
+        self.crawlAnim = self.loadPlistForAnimationName("crawlAnim", andClassName: String(self.dynamicType))
     }
     
     required init?(coder aDecoder: NSCoder) {

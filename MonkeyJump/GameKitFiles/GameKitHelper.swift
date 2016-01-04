@@ -22,6 +22,7 @@ protocol GameKitHelperProtocol {
     func onAchievementsLoaded(achievements: [String: GKAchievement])
     func onAchievementsReported(achievement: GKAchievement)
     func onScoreSubmitted(success: Bool)
+    func onScoreOfFriendsToChallengeListReceived(scores: [GKScore])
 }
 
 extension GameKitHelperProtocol {
@@ -41,6 +42,7 @@ class GameKitHelper: NSObject {
     
     // MARK: - public properties
     var delegate: GameKitHelperProtocol?
+    var includeLocalPlayerScore: Bool = false
     
     // This property holds the authenticationViewController provided by the Game Center API's
     private(set) var authenticationViewController: UIViewController?
@@ -130,7 +132,7 @@ class GameKitHelper: NSObject {
     }
     
     /// Show Game Center
-    func showGameCenterViewController(controller: UIViewController) {
+    func presentGameCenterViewControllerFromViewController(controller: UIViewController) {
         
         //1 Create GameCenterViewController instance
         let gameCenterViewController = GKGameCenterViewController()
@@ -208,7 +210,7 @@ class GameKitHelper: NSObject {
     
     
     /// Share Score on Social Networks
-    func shareScore(score: Int64, leaderBoardID: String, inParentViewController parentViewController: UIViewController) {
+    func presentShareScoreControllerFromViewController(controller: UIViewController, score: Int64, leaderBoardID: String) {
         
         let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
         gkScore.value = score
@@ -230,9 +232,59 @@ class GameKitHelper: NSObject {
             }
         }
         
-        parentViewController.presentViewController(shareScoreViewController, animated: true, completion: nil)
+        controller.presentViewController(shareScoreViewController, animated: true, completion: nil)
+    }
+ 
+    
+    /// Challenge Score Features
+    func findScoresOfFriendsToChallenge(leaderBoardID: String) {
+        
+        let leaderBoard = GKLeaderboard()
+        leaderBoard.identifier = leaderBoardID
+        leaderBoard.playerScope = .FriendsOnly
+        leaderBoard.range = NSRange(location: 1, length: 100)
+        
+        leaderBoard.loadScoresWithCompletionHandler { [weak self] (scores, error) -> Void in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            strongSelf.setLastError(error)
+            guard let scores = scores where error == nil else {
+                return
+            }
+                
+            var friendsScores: [GKScore]
+            if !strongSelf.includeLocalPlayerScore {
+                friendsScores = scores.filter({ (score) -> Bool in
+                    score.player.playerID != GKLocalPlayer.localPlayer().playerID
+                })
+            }
+            else {
+                friendsScores = scores
+            }
+                
+            strongSelf.delegate?.onScoreOfFriendsToChallengeListReceived(friendsScores)
+            
+        }
     }
     
+    // TODO: this signature seems a bit long. Maybe we can improved with a specific class
+    func presentChallengeComposeControllerFromViewController(controller: UIViewController, leaderBoardID: String,
+        withSelectedPlayers playerIDs: [String], withScore score: Int64, message: String)
+    {
+        
+        let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
+        gkScore.value = score
+        
+        let challengeComposeController = gkScore.challengeComposeControllerWithPlayers(playerIDs, message: message, completionHandler: { (composeController, didIssueChallenge, sentPlayerIDs) -> Void in
+            composeController.dismissViewControllerAnimated(true, completion: nil) })
+        
+        if let challengeComposeController = challengeComposeController {
+            controller.presentViewController(challengeComposeController, animated: true, completion: nil)
+        }
+    
+    }
 }
 
 // MARK: - GKGameCenterControllerDelegate
