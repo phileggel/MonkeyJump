@@ -11,6 +11,9 @@
 		4A2B2E2A1C286D4E0045C13C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E291C286D4E0045C13C /* GameScene.swift */; };
 		4AA196E31C3A923000E6FB9D /* Achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA196E21C3A923000E6FB9D /* Achievements.plist */; };
 		4AA196E51C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA196E41C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift */; };
+		4AA196E71C3ABE2300E6FB9D /* Croc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA196E61C3ABE2300E6FB9D /* Croc.swift */; };
+		4AA196E91C3AC07600E6FB9D /* HedgeHog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA196E81C3AC07600E6FB9D /* HedgeHog.swift */; };
+		4AA196EB1C3AC1BB00E6FB9D /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA196EA1C3AC1BB00E6FB9D /* Snake.swift */; };
 		4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */; };
 		4AA3AAF41C285A0800BD3B6F /* MonkeyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3AAF31C285A0800BD3B6F /* MonkeyAudio.swift */; };
 		4ACDC7751C280C9E00DB6FF6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */; };
@@ -30,9 +33,6 @@
 		61AE8C75183A56CE005BA2EB /* hurt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61AE8C72183A56CE005BA2EB /* hurt.mp3 */; };
 		61AE8C76183A56CE005BA2EB /* background_track.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 61AE8C73183A56CE005BA2EB /* background_track.aiff */; };
 		61AE8C77183A56CE005BA2EB /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61AE8C74183A56CE005BA2EB /* jump.wav */; };
-		61AE8C7A183A60FC005BA2EB /* Snake.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE8C79183A60FC005BA2EB /* Snake.m */; };
-		61AE8C7D183A6113005BA2EB /* HedgeHog.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE8C7C183A6113005BA2EB /* HedgeHog.m */; };
-		61AE8C80183A611E005BA2EB /* Croc.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE8C7F183A611E005BA2EB /* Croc.m */; };
 		61D2AB911839304200941988 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D2AB901839304200941988 /* Foundation.framework */; };
 		61D2AB931839304200941988 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D2AB921839304200941988 /* CoreGraphics.framework */; };
 		61D2AB951839304200941988 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D2AB941839304200941988 /* UIKit.framework */; };
@@ -65,6 +65,9 @@
 		4A2B2E291C286D4E0045C13C /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		4AA196E21C3A923000E6FB9D /* Achievements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Achievements.plist; sourceTree = "<group>"; };
 		4AA196E41C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonkeyGameKitHelper.swift; sourceTree = "<group>"; };
+		4AA196E61C3ABE2300E6FB9D /* Croc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Croc.swift; sourceTree = "<group>"; };
+		4AA196E81C3AC07600E6FB9D /* HedgeHog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HedgeHog.swift; sourceTree = "<group>"; };
+		4AA196EA1C3AC1BB00E6FB9D /* Snake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snake.swift; sourceTree = "<group>"; };
 		4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuViewController.swift; sourceTree = "<group>"; };
 		4AA3AAF31C285A0800BD3B6F /* MonkeyAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonkeyAudio.swift; sourceTree = "<group>"; };
 		4ACDC7741C280C9E00DB6FF6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -87,12 +90,6 @@
 		61AE8C72183A56CE005BA2EB /* hurt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hurt.mp3; sourceTree = "<group>"; };
 		61AE8C73183A56CE005BA2EB /* background_track.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = background_track.aiff; sourceTree = "<group>"; };
 		61AE8C74183A56CE005BA2EB /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
-		61AE8C78183A60FC005BA2EB /* Snake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snake.h; sourceTree = "<group>"; };
-		61AE8C79183A60FC005BA2EB /* Snake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snake.m; sourceTree = "<group>"; };
-		61AE8C7B183A6113005BA2EB /* HedgeHog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HedgeHog.h; sourceTree = "<group>"; };
-		61AE8C7C183A6113005BA2EB /* HedgeHog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HedgeHog.m; sourceTree = "<group>"; };
-		61AE8C7E183A611E005BA2EB /* Croc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Croc.h; sourceTree = "<group>"; };
-		61AE8C7F183A611E005BA2EB /* Croc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Croc.m; sourceTree = "<group>"; };
 		61D2AB8D1839304200941988 /* MonkeyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonkeyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D2AB901839304200941988 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		61D2AB921839304200941988 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -165,12 +162,9 @@
 				61AE8C63183A4EB8005BA2EB /* GameElement.m */,
 				61AE8C65183A51B8005BA2EB /* Monkey.h */,
 				61AE8C66183A51B8005BA2EB /* Monkey.m */,
-				61AE8C78183A60FC005BA2EB /* Snake.h */,
-				61AE8C79183A60FC005BA2EB /* Snake.m */,
-				61AE8C7B183A6113005BA2EB /* HedgeHog.h */,
-				61AE8C7C183A6113005BA2EB /* HedgeHog.m */,
-				61AE8C7E183A611E005BA2EB /* Croc.h */,
-				61AE8C7F183A611E005BA2EB /* Croc.m */,
+				4AA196EA1C3AC1BB00E6FB9D /* Snake.swift */,
+				4AA196E81C3AC07600E6FB9D /* HedgeHog.swift */,
+				4AA196E61C3ABE2300E6FB9D /* Croc.swift */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -419,13 +413,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */,
-				61AE8C7A183A60FC005BA2EB /* Snake.m in Sources */,
 				4A2B2E2A1C286D4E0045C13C /* GameScene.swift in Sources */,
-				61AE8C7D183A6113005BA2EB /* HedgeHog.m in Sources */,
 				61AE8C67183A51B8005BA2EB /* Monkey.m in Sources */,
-				61AE8C80183A611E005BA2EB /* Croc.m in Sources */,
 				61D2ABA31839304200941988 /* AppDelegate.m in Sources */,
+				4AA196EB1C3AC1BB00E6FB9D /* Snake.swift in Sources */,
 				4AA3AAF41C285A0800BD3B6F /* MonkeyAudio.swift in Sources */,
+				4AA196E71C3ABE2300E6FB9D /* Croc.swift in Sources */,
+				4AA196E91C3AC07600E6FB9D /* HedgeHog.swift in Sources */,
 				4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */,
 				4AA196E51C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift in Sources */,
 				61AE8C64183A4EB8005BA2EB /* GameElement.m in Sources */,

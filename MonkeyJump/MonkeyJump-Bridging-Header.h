@@ -3,6 +3,3 @@
 //
 
 #import "Monkey.h"
-#import "Snake.h"
-#import "HedgeHog.h"
-#import "Croc.h"
