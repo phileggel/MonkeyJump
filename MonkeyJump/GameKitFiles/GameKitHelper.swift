@@ -12,14 +12,15 @@ import GameKit
 // MARK: -
 protocol GameKitHelperProtocol {
     // Optional protocol only available with @objc
-    func onAchievementsLoaded(achievements: NSDictionary)
+    func onAchievementsLoaded(achievements: [String: GKAchievement])
+    func onAchievementsReported(achievement: GKAchievement)
     func onScoreSubmitted(success: Bool)
 }
 
 extension GameKitHelperProtocol {
     // Use extension to declare a default func behavior instead
     // of making it optional
-    func onAchievementsLoaded(achievements: NSDictionary) {}
+    func onAchievementsLoaded(achievements: [String: GKAchievement]) {}
     func onScoreSubmitted(success: Bool) {}
 }
 
@@ -33,13 +34,7 @@ class GameKitHelper: NSObject {
     
     // MARK: - public properties
     var delegate: GameKitHelperProtocol?
-    private(set) var authentificationViewController: UIViewController? {
-        didSet {
-            if let _ = authentificationViewController {
-                NSNotificationCenter.defaultCenter().postNotificationName(GameKitHelper.presentAuthenticationViewController, object: nil)
-            }
-        }
-    }
+    private(set) var authenticationViewController: UIViewController?
     
     // This property holds the last known error
     // that occured while using the Game Center API's
@@ -55,38 +50,75 @@ class GameKitHelper: NSObject {
     }
     
     // This property holds Game Center achievements
-    private(set) var achievements: NSMutableDictionary?
+    private(set) var achievements: [String: GKAchievement]?
 
     
     // MARK: - private properties
     private var gameCenterFeaturesEnabled: Bool = false
     
     
-    // MARK: - public methods
+    // MARK: - main methods
+    
+    /// Authenticate the local player
     func authenticateLocalPlayer() {
         
         let localPlayer = GKLocalPlayer()
-        localPlayer.authenticateHandler = { [weak self] (viewController, error) -> Void in
+        localPlayer.authenticateHandler = { [weak self] (controller, error) -> Void in
+            guard let strongSelf = self else {
+                return
+            }
             
-            self?.setLastError(error)
-            if let _ = viewController {
-                
-                self?.authentificationViewController = viewController
+            strongSelf.setLastError(error)
             
-            } else if GKLocalPlayer.localPlayer().authenticated {
-                
-                self?.gameCenterFeaturesEnabled = true
-                
-            } else {
-                
-                self?.gameCenterFeaturesEnabled = false
-                
+            if let _ = controller {
+                strongSelf.authenticationViewController = controller
+                strongSelf.notifyAskForAuthentication()
+            }
+            else if GKLocalPlayer.localPlayer().authenticated {
+                strongSelf.gameCenterFeaturesEnabled = true
+                strongSelf.loadAchievements()
+            }
+            else {
+                strongSelf.gameCenterFeaturesEnabled = false
             }
             
         }
 
     }
-
+    
+    private func notifyAskForAuthentication() {
+        if let _ = authenticationViewController {
+            NSNotificationCenter.defaultCenter().postNotificationName(GameKitHelper.presentAuthenticationViewController, object: nil)
+        }
+    }
+    
+    private func loadAchievements() {
+        guard gameCenterFeaturesEnabled else {
+            print("Player not authenticated!")
+            return
+        }
+        
+        GKAchievement.loadAchievementsWithCompletionHandler { [weak self] (loadedAchievements, error) -> Void in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            strongSelf.setLastError(error)
+            
+            // populates achievements
+            strongSelf.achievements = [:]
+            if let loadedAchievements = loadedAchievements {
+                for achievement in loadedAchievements {
+                    if let identifier = achievement.identifier {
+                        achievement.showsCompletionBanner = true
+                        strongSelf.achievements![identifier] = achievement
+                    }
+                }
+            }
+            
+            strongSelf.delegate?.onAchievementsLoaded(strongSelf.achievements!)
+        }
+    }
     
     /// Show Game Center
     func showGameCenterViewController(controller: UIViewController) {
@@ -107,9 +139,7 @@ class GameKitHelper: NSObject {
     
     /// Scores
     func submitScore(score: Int64, leaderBoardID: String) {
-        
-        //1 Check if game center features is enabled
-        if !gameCenterFeaturesEnabled {
+        guard gameCenterFeaturesEnabled else {
             print("Player not authenticated!")
             return
         }
@@ -129,6 +159,42 @@ class GameKitHelper: NSObject {
             
             self?.delegate?.onScoreSubmitted(success)
         }
+    }
+    
+    /// Report Achievements
+    func reportAchievementsWithID(identifier: String, percentComplete percent: Double) {
+        guard gameCenterFeaturesEnabled else {
+            print("Player not authenticated!")
+            return
+        }
+        
+        if let achievement = getAchievementByID(identifier) where achievement.percentComplete < percent  {
+            
+            achievement.percentComplete = percent
+            
+            GKAchievement.reportAchievements([achievement], withCompletionHandler: { [weak self] (error) -> Void in
+                self?.setLastError(error)
+                self?.delegate?.onAchievementsReported(achievement)
+            })
+        }
+    }
+    
+    private func getAchievementByID(identifier: String) -> GKAchievement? {
+        guard let _ = achievements else {
+            return nil
+        }
+        
+        var foundAchievememt: GKAchievement
+        if let achievement = achievements![identifier] {
+            foundAchievememt = achievement
+        }
+        else {
+            foundAchievememt = GKAchievement(identifier: identifier)
+            foundAchievememt.showsCompletionBanner = true
+            achievements![identifier] = foundAchievememt
+        }
+        
+        return foundAchievememt
     }
     
 }

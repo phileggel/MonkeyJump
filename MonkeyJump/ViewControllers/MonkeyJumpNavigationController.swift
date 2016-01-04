@@ -27,6 +27,6 @@ class MonkeyJumpNavigationController: UINavigationController {
     func showAuthenticationViewController() {
         let gameKitHelper = GameKitHelper.sharedInstance
         
-        topViewController?.presentViewController(gameKitHelper.authentificationViewController!, animated: true, completion: nil)
+        topViewController?.presentViewController(gameKitHelper.authenticationViewController!, animated: true, completion: nil)
     }
 }
