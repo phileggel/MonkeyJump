@@ -29,7 +29,9 @@ extension GameKitHelperProtocol {
     // Use extension to declare a default func behavior instead
     // of making it optional
     func onAchievementsLoaded(achievements: [String: GKAchievement]) {}
+    func onAchievementsReported(achievement: GKAchievement) {}
     func onScoreSubmitted(success: Bool) {}
+    func onScoreOfFriendsToChallengeListReceived(scores: [GKScore]) {}
 }
 
 
@@ -269,21 +271,40 @@ class GameKitHelper: NSObject {
         }
     }
     
-    // TODO: this signature seems a bit long. Maybe we can improved with a specific class
+    // This tutorial method is deprecated. I will get rid of it at the tutorial's end.
+    @available(iOS, deprecated=8.0, message="pass GKPlayers to challengeComposeControllerWithMessage:players:")
     func presentChallengeComposeControllerFromViewController(controller: UIViewController, leaderBoardID: String,
-        withSelectedPlayers playerIDs: [String], withScore score: Int64, message: String)
+        withSelectedPlayerIDs playerIDs: [String], withScore score: Int64, message: String)
     {
         
         let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
         gkScore.value = score
         
-        let challengeComposeController = gkScore.challengeComposeControllerWithPlayers(playerIDs, message: message, completionHandler: { (composeController, didIssueChallenge, sentPlayerIDs) -> Void in
-            composeController.dismissViewControllerAnimated(true, completion: nil) })
+        // usage of playerID within GKScore is deprecated. We should now use GKPlayer object instead.
+        let challengeComposeController = gkScore.challengeComposeControllerWithPlayers(playerIDs, message: message) {
+            (composeController, didIssueChallenge, sentPlayerIDs) -> Void in
+            composeController.dismissViewControllerAnimated(true, completion: nil)
+        }
         
         if let challengeComposeController = challengeComposeController {
             controller.presentViewController(challengeComposeController, animated: true, completion: nil)
         }
+
+    }
     
+    func presentChallengeComposeControllerFromViewController(controller:UIViewController, leaderBoardID: String,
+        withSelectedPlayers players: [GKPlayer], withScore score: Int64, message: String)
+    {
+        let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
+        gkScore.value = score
+        
+        let challengeComposeController = gkScore.challengeComposeControllerWithMessage(message, players: players) {
+            (composeController, didIssueChallenge, sentPlayerIDs) -> Void in
+            composeController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        controller.presentViewController(challengeComposeController, animated: true, completion: nil)
+        
     }
 }
 
