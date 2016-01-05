@@ -25,7 +25,7 @@ class GameOverViewController: UIViewController {
 
     
     // MARK: - private properties
-    var score = 0 {
+    var score: Int64 = 0 {
         didSet {
             if let _ = scoreLabel {
                 scoreLabel.text = "YOUR SCORE: \(score)"
@@ -48,7 +48,7 @@ class GameOverViewController: UIViewController {
         case GameOverViewController.mainMenuButtonTag:
             navigationController?.popToRootViewControllerAnimated(false)
         case GameOverViewController.shareButtonTag:
-            GameKitHelper.sharedInstance.presentShareScoreControllerFromViewController(self, score: Int64(score),
+            GameKitHelper.sharedInstance.presentShareScoreControllerFromViewController(self, score: score,
                 leaderBoardID: AppConstant.highScoreLeaderBoardID)
         default:
             fatalError("buttonPressed event not available")
@@ -77,12 +77,12 @@ extension GameOverViewController: GameKitHelperProtocol {
         spinner.stopAnimating()
         var players: [GKPlayer] = []
         for gkScore in scores {
-            if gkScore.value < Int64(score) {
+            if gkScore.value < score {
                 players.append(gkScore.player)
             }
         }
         
-        GameKitHelper.sharedInstance.presentChallengeComposeControllerFromViewController(self, leaderBoardID: AppConstant.highScoreLeaderBoardID, withSelectedPlayers: players, withScore: Int64(score), message: "Beat this!")
+        GameKitHelper.sharedInstance.presentChallengeComposeControllerFromViewController(self, leaderBoardID: AppConstant.highScoreLeaderBoardID, withSelectedPlayers: players, withScore: score, message: "Beat this!")
         
     }
 

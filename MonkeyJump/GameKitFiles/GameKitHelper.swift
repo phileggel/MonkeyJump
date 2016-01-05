@@ -271,27 +271,6 @@ class GameKitHelper: NSObject {
         }
     }
     
-    // This tutorial method is deprecated. I will get rid of it at the tutorial's end.
-    @available(iOS, deprecated=8.0, message="pass GKPlayers to challengeComposeControllerWithMessage:players:")
-    func presentChallengeComposeControllerFromViewController(controller: UIViewController, leaderBoardID: String,
-        withSelectedPlayerIDs playerIDs: [String], withScore score: Int64, message: String)
-    {
-        
-        let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
-        gkScore.value = score
-        
-        // usage of playerID within GKScore is deprecated. We should now use GKPlayer object instead.
-        let challengeComposeController = gkScore.challengeComposeControllerWithPlayers(playerIDs, message: message) {
-            (composeController, didIssueChallenge, sentPlayerIDs) -> Void in
-            composeController.dismissViewControllerAnimated(true, completion: nil)
-        }
-        
-        if let challengeComposeController = challengeComposeController {
-            controller.presentViewController(challengeComposeController, animated: true, completion: nil)
-        }
-
-    }
-    
     func presentChallengeComposeControllerFromViewController(controller:UIViewController, leaderBoardID: String,
         withSelectedPlayers players: [GKPlayer], withScore score: Int64, message: String)
     {

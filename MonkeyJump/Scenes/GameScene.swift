@@ -14,7 +14,7 @@
 import SpriteKit
 
 protocol GameSceneProtocol {
-    func gameOverWithScore(score: Int)
+    func gameOverWithScore(score: Int64)
 }
     
 // MARK: -
@@ -238,7 +238,7 @@ class GameScene: SKScene {
         
         GameKitHelper.sharedInstance.submitScore(Int64(distance), leaderBoardID: AppConstant.highScoreLeaderBoardID)
         MonkeyGameKitHelper.reportAchievementsForDistance(Int64(distance))
-        gameSceneDelegate?.gameOverWithScore(Int(distance))
+        gameSceneDelegate?.gameOverWithScore(Int64(distance))
 
     }
 
