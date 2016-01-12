@@ -46,6 +46,12 @@ class GameScene: SKScene {
     private var nextSpawn: Double = 0
     private var difficultyMeasure: CGFloat = 1
     
+    
+    // MARK: - GameTracking Properties
+    private var startTime: NSTimeInterval
+    private var randomSeed: UInt32
+    private var gameTracking: GameTracking
+    
     override init(size: CGSize) {
         
         jumpSound = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
@@ -75,6 +81,14 @@ class GameScene: SKScene {
         livesLabel.fontColor = SKColor.whiteColor()
         livesLabel.text = "Lives: \(monkey.lives)"
 
+        startTime = 0
+        // time(nil) is a c function that returns current time in seconds since jan,1 1970 
+        // as time_t (Int typealias)
+        randomSeed = UInt32(time(nil))
+        srand(randomSeed)
+        gameTracking = GameTracking()
+        gameTracking.randomSeed = randomSeed
+        
         super.init(size: size)
         
         addChild(background1)
@@ -92,6 +106,10 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func didMoveToView(view: SKView) {
+        let startDate = NSDate()
+        startTime = startDate.timeIntervalSince1970
+    }
     
     override func update(currentTime: NSTimeInterval) {
         if monkey.state == .Dead {
@@ -178,6 +196,10 @@ class GameScene: SKScene {
                         monkey.lives -= 1
                         livesLabel.text = "Lives: \(monkey.lives)"
                         
+                        let hitDate = NSDate()
+                        let hitTimeSinceStart = hitDate.timeIntervalSince1970 - startTime
+                        gameTracking.addHitTime(hitTimeSinceStart)
+                        
                         if monkey.lives <= 0 {
                             
                             monkey.position = CGPoint(x: scene!.size.width * 0.125, y: scene!.size.height * 0.271)
@@ -217,6 +239,11 @@ class GameScene: SKScene {
         if !jumping {
             
             jumping = true
+            
+            let jumpDate = NSDate()
+            let jumpTimeSinceStart = jumpDate.timeIntervalSince1970 - startTime
+            gameTracking.addJumpTime(jumpTimeSinceStart)
+            
             runAction(jumpSound)
             monkey.state = .Jumping
             
