@@ -20,7 +20,6 @@ class GameMenuViewController: UIViewController {
         if !MonkeyAudio.sharedInstance.backgroundMusicPlaying {
             MonkeyAudio.sharedInstance.playBackgroundMusic("background_track.aiff")
         }
-
     }
 
     
@@ -30,8 +29,6 @@ class GameMenuViewController: UIViewController {
     }
 
     @IBAction func gameCenterButtonPressed(sender: UIButton) {
-        
         GameKitHelper.sharedInstance.presentGameCenterViewControllerFromViewController(self)
-        
     }
 }

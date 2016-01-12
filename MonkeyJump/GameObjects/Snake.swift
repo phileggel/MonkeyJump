@@ -8,7 +8,7 @@
 //
 
 
-import Foundation
+import SpriteKit
 
 class Snake: GameElement {
     

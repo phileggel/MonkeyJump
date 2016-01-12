@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4A1E10CB1C44EA1400D725A0 /* GhostMonkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10CA1C44EA1400D725A0 /* GhostMonkey.swift */; };
 		4A1E10CD1C44EA6900D725A0 /* Monkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10CC1C44EA6900D725A0 /* Monkey.swift */; };
+		4A1E10CF1C44F11800D725A0 /* GameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10CE1C44F11800D725A0 /* GameElement.swift */; };
+		4A1E10D31C45085E00D725A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10D21C45085E00D725A0 /* AppDelegate.swift */; };
 		4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E271C286C0A0045C13C /* Constant.swift */; };
 		4A2B2E2A1C286D4E0045C13C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E291C286D4E0045C13C /* GameScene.swift */; };
 		4AA196E31C3A923000E6FB9D /* Achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA196E21C3A923000E6FB9D /* Achievements.plist */; };
@@ -26,7 +28,6 @@
 		61471E2C1A17A8CD00A4384F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61471E2A1A17A8CD00A4384F /* LaunchScreen.xib */; };
 		61471E311A17CC5800A4384F /* characteranimations@3x.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 61471E301A17CC5800A4384F /* characteranimations@3x.atlas */; };
 		61471E681A17CF1E00A4384F /* characteranimations@2x.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 61471E671A17CF1E00A4384F /* characteranimations@2x.atlas */; };
-		61AE8C64183A4EB8005BA2EB /* GameElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE8C63183A4EB8005BA2EB /* GameElement.m */; };
 		61AE8C6D183A55B0005BA2EB /* Monkey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61AE8C69183A55B0005BA2EB /* Monkey.plist */; };
 		61AE8C6E183A55B0005BA2EB /* HedgeHog.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61AE8C6A183A55B0005BA2EB /* HedgeHog.plist */; };
 		61AE8C6F183A55B0005BA2EB /* Snake.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61AE8C6B183A55B0005BA2EB /* Snake.plist */; };
@@ -39,8 +40,6 @@
 		61D2AB951839304200941988 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D2AB941839304200941988 /* UIKit.framework */; };
 		61D2AB971839304200941988 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D2AB961839304200941988 /* SpriteKit.framework */; };
 		61D2AB9D1839304200941988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 61D2AB9B1839304200941988 /* InfoPlist.strings */; };
-		61D2AB9F1839304200941988 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D2AB9E1839304200941988 /* main.m */; };
-		61D2ABA31839304200941988 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D2ABA21839304200941988 /* AppDelegate.m */; };
 		61D2ABA61839304200941988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61D2ABA41839304200941988 /* Main.storyboard */; };
 		61D2ABB01839304200941988 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D2ABAF1839304200941988 /* Images.xcassets */; };
 		61D2ABB71839304200941988 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D2ABB61839304200941988 /* XCTest.framework */; };
@@ -64,6 +63,8 @@
 /* Begin PBXFileReference section */
 		4A1E10CA1C44EA1400D725A0 /* GhostMonkey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostMonkey.swift; sourceTree = "<group>"; };
 		4A1E10CC1C44EA6900D725A0 /* Monkey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monkey.swift; sourceTree = "<group>"; };
+		4A1E10CE1C44F11800D725A0 /* GameElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameElement.swift; sourceTree = "<group>"; };
+		4A1E10D21C45085E00D725A0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A2B2E271C286C0A0045C13C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4A2B2E291C286D4E0045C13C /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		4AA196E21C3A923000E6FB9D /* Achievements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Achievements.plist; sourceTree = "<group>"; };
@@ -82,8 +83,6 @@
 		61471E2B1A17A8CD00A4384F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		61471E301A17CC5800A4384F /* characteranimations@3x.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "characteranimations@3x.atlas"; sourceTree = "<group>"; };
 		61471E671A17CF1E00A4384F /* characteranimations@2x.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "characteranimations@2x.atlas"; sourceTree = "<group>"; };
-		61AE8C62183A4EB8005BA2EB /* GameElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameElement.h; sourceTree = "<group>"; };
-		61AE8C63183A4EB8005BA2EB /* GameElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameElement.m; sourceTree = "<group>"; };
 		61AE8C69183A55B0005BA2EB /* Monkey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Monkey.plist; sourceTree = "<group>"; };
 		61AE8C6A183A55B0005BA2EB /* HedgeHog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HedgeHog.plist; sourceTree = "<group>"; };
 		61AE8C6B183A55B0005BA2EB /* Snake.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Snake.plist; sourceTree = "<group>"; };
@@ -98,10 +97,7 @@
 		61D2AB961839304200941988 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		61D2AB9A1839304200941988 /* MonkeyJump-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MonkeyJump-Info.plist"; sourceTree = "<group>"; };
 		61D2AB9C1839304200941988 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		61D2AB9E1839304200941988 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		61D2ABA01839304200941988 /* MonkeyJump-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MonkeyJump-Prefix.pch"; sourceTree = "<group>"; };
-		61D2ABA11839304200941988 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		61D2ABA21839304200941988 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		61D2ABA51839304200941988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		61D2ABAF1839304200941988 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		61D2ABB51839304200941988 /* MonkeyJumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonkeyJumpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,8 +155,7 @@
 		61AE8C61183A4E91005BA2EB /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
-				61AE8C62183A4EB8005BA2EB /* GameElement.h */,
-				61AE8C63183A4EB8005BA2EB /* GameElement.m */,
+				4A1E10CE1C44F11800D725A0 /* GameElement.swift */,
 				4A1E10CC1C44EA6900D725A0 /* Monkey.swift */,
 				4AA196EA1C3AC1BB00E6FB9D /* Snake.swift */,
 				4AA196E81C3AC07600E6FB9D /* HedgeHog.swift */,
@@ -248,12 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				61471E2A1A17A8CD00A4384F /* LaunchScreen.xib */,
-				61D2ABA11839304200941988 /* AppDelegate.h */,
-				61D2ABA21839304200941988 /* AppDelegate.m */,
+				4A1E10D21C45085E00D725A0 /* AppDelegate.swift */,
 				4ACDC7771C280D6C00DB6FF6 /* MonkeyJump-Bridging-Header.h */,
 				61D2AB9A1839304200941988 /* MonkeyJump-Info.plist */,
 				61D2AB9B1839304200941988 /* InfoPlist.strings */,
-				61D2AB9E1839304200941988 /* main.m */,
 				61D2ABA01839304200941988 /* MonkeyJump-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -415,21 +408,20 @@
 			files = (
 				4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */,
 				4A2B2E2A1C286D4E0045C13C /* GameScene.swift in Sources */,
-				61D2ABA31839304200941988 /* AppDelegate.m in Sources */,
+				4A1E10CF1C44F11800D725A0 /* GameElement.swift in Sources */,
 				4AA196EB1C3AC1BB00E6FB9D /* Snake.swift in Sources */,
 				4AA3AAF41C285A0800BD3B6F /* MonkeyAudio.swift in Sources */,
 				4AA196E71C3ABE2300E6FB9D /* Croc.swift in Sources */,
 				4AA196E91C3AC07600E6FB9D /* HedgeHog.swift in Sources */,
 				4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */,
 				4AA196E51C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift in Sources */,
-				61AE8C64183A4EB8005BA2EB /* GameElement.m in Sources */,
 				4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */,
 				4AF7D1311C299F8800A2A90D /* GameViewController.swift in Sources */,
+				4A1E10D31C45085E00D725A0 /* AppDelegate.swift in Sources */,
 				4AF7D1331C29A2D000A2A90D /* GameOverViewController.swift in Sources */,
 				4A1E10CD1C44EA6900D725A0 /* Monkey.swift in Sources */,
 				4A1E10CB1C44EA1400D725A0 /* GhostMonkey.swift in Sources */,
 				4ACDC77B1C2821DD00DB6FF6 /* MonkeyJumpNavigationController.swift in Sources */,
-				61D2AB9F1839304200941988 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

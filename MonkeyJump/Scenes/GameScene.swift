@@ -13,7 +13,7 @@
 
 import SpriteKit
 
-protocol GameSceneProtocol {
+protocol GameSceneProtocol: class {
     func gameOverWithScore(score: Int64)
 }
     
@@ -30,7 +30,7 @@ class GameScene: SKScene {
     
     
     // MARK: - public properties
-    var gameSceneDelegate: GameSceneProtocol?
+    weak var gameSceneDelegate: GameSceneProtocol?
     
     
     // MARK: - private properties
@@ -46,7 +46,6 @@ class GameScene: SKScene {
     private var nextSpawn: Double = 0
     private var difficultyMeasure: CGFloat = 1
     
-    
     override init(size: CGSize) {
         
         jumpSound = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
@@ -61,7 +60,7 @@ class GameScene: SKScene {
         background2.position = CGPoint(x: background2.size.width + background2.size.width / 2, y: size.height / 2)
         background2.zPosition = -1
         
-        monkey = Monkey.shareInstance
+        monkey = Monkey(imageNamed: "monkey_run1.png")
         monkey.position = CGPoint(x: 0.125 * size.width, y: 0.260 * size.height)
         
         distanceLabel = SKLabelNode(fontNamed: "Arial")

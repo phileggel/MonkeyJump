@@ -6,7 +6,7 @@
 //  Copyright © 2015 PhilEagleDev.com. All rights reserved.
 //
 
-import UIKit
+import SpriteKit
 
 class GameViewController: UIViewController {
 
@@ -28,7 +28,6 @@ class GameViewController: UIViewController {
         }
 
     }
-    
 }
 
 extension GameViewController: GameSceneProtocol {
@@ -36,7 +35,7 @@ extension GameViewController: GameSceneProtocol {
     func gameOverWithScore(score: Int64) {
         let gameOverViewController = storyboard!.instantiateViewControllerWithIdentifier(GameOverViewController.storyboardID) as! GameOverViewController
         gameOverViewController.score = score
-        navigationController!.pushViewController(gameOverViewController, animated: false)
+        navigationController?.pushViewController(gameOverViewController, animated: false)
     }
     
 }

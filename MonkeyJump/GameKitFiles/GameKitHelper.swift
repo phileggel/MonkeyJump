@@ -17,7 +17,7 @@ import UIKit
 import GameKit
 
 // MARK: -
-protocol GameKitHelperProtocol {
+protocol GameKitHelperProtocol: class {
     // Optional protocol only available with @objc
     func onAchievementsLoaded(achievements: [String: GKAchievement])
     func onAchievementsReported(achievement: GKAchievement)
@@ -43,7 +43,7 @@ class GameKitHelper: NSObject {
     static let sharedInstance = GameKitHelper() // Singleton Pattern
     
     // MARK: - public properties
-    var delegate: GameKitHelperProtocol?
+    weak var delegate: GameKitHelperProtocol?
     var includeLocalPlayerScore: Bool = false
     
     // This property holds the authenticationViewController provided by the Game Center API's

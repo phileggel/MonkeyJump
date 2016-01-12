@@ -7,7 +7,7 @@
 //  Copyright © 2016 PhilEagleDev.com. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 class Croc: GameElement {
     

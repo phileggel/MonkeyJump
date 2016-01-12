@@ -7,7 +7,7 @@
 //  Copyright © 2016 PhilEagleDev.com. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 enum MonkeyState {
     case Idle, Walking, Jumping, Dead
@@ -22,9 +22,38 @@ class Monkey: GameElement {
     private var jumpAnimation: SKAction!
     
     var lives: Int
-    var state: MonkeyState
-
-    static let shareInstance = Monkey(imageNamed: "monkey_run1.png")
+    var state: MonkeyState {
+        didSet {
+            if oldValue != state {
+                selectCurrentAction()
+            }
+        }
+    }
+    
+    private func selectCurrentAction() {
+        
+        switch state {
+        case .Walking:
+            if let _ = actionForKey(Monkey.jumpAnimationKey) {
+                removeActionForKey(Monkey.jumpAnimationKey)
+            }
+            runAction(SKAction.repeatActionForever(walkAnimation), withKey: Monkey.walkAnimationKey)
+        
+        case .Jumping:
+            if let _ = actionForKey(Monkey.walkAnimationKey) {
+                removeActionForKey(Monkey.walkAnimationKey)
+            }
+            runAction(jumpAnimation, withKey: Monkey.jumpAnimationKey)
+        
+        case .Dead:
+            removeAllActions()
+            let gameAtlas = SKTextureAtlas(named: "characteranimations")
+            texture = gameAtlas.textureNamed("monkey_dead.png")
+        
+        case .Idle:
+            break
+        }
+    }
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         self.lives = 3
@@ -32,49 +61,13 @@ class Monkey: GameElement {
         
         super.init(texture: texture, color: color, size: size)
         self.gameElementType = .Monkey
-        self.initAnimations()
+        self.walkAnimation = loadPlistForAnimationName("walkAnim", andClassName: String(self.dynamicType))
+        self.jumpAnimation = loadPlistForAnimationName("jumpAnim", andClassName: String(self.dynamicType))
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private func initAnimations() {
-        walkAnimation = loadPlistForAnimationName("walkAnim", andClassName: String(self.dynamicType))
-        jumpAnimation = loadPlistForAnimationName("jumpAnim", andClassName: String(self.dynamicType))
-    }
     
-    private func setState(newState: MonkeyState) {
-        if newState == state {
-            return
-        }
-        
-        state = newState
-        
-        var action: SKAction?
-        var key: String?
-        if state == .Walking {
-            if let _ = actionForKey(Monkey.jumpAnimationKey) {
-                removeActionForKey(Monkey.jumpAnimationKey)
-            }
-            action = SKAction.repeatActionForever(walkAnimation)
-            key = Monkey.walkAnimationKey
-        }
-        else if state == .Jumping {
-            if let _ = actionForKey(Monkey.walkAnimationKey) {
-                removeActionForKey(Monkey.walkAnimationKey)
-            }
-            action = jumpAnimation
-            key = Monkey.jumpAnimationKey
-        }
-        else if state == .Dead {
-            removeAllActions()
-            let gameAtlas = SKTextureAtlas(named: "characteranimations")
-            texture = gameAtlas.textureNamed("monkey_dead.png")
-        }
-        
-        if let action = action {
-            runAction(action, withKey: key!)
-        }
-    }
+
 }

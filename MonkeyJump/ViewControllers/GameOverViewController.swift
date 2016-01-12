@@ -68,7 +68,6 @@ class GameOverViewController: UIViewController {
         gameKitHelper.delegate = self
         gameKitHelper.findScoresOfFriendsToChallenge(AppConstant.highScoreLeaderBoardID)
     }
-    
 }
 
 extension GameOverViewController: GameKitHelperProtocol {
