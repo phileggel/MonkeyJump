@@ -9,5 +9,7 @@
 import Foundation
 
 class GhostMonkey: Monkey {
-    
+    override var deadTextureName: String {
+        return "monkey_ghost_dead.png"
+    }
 }

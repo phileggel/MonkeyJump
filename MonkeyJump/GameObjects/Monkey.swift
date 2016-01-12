@@ -21,6 +21,10 @@ class Monkey: GameElement {
     private var walkAnimation: SKAction!
     private var jumpAnimation: SKAction!
     
+    var deadTextureName: String {
+        return "monkey_dead.png"
+    }
+
     var lives: Int
     var state: MonkeyState {
         didSet {
@@ -48,7 +52,7 @@ class Monkey: GameElement {
         case .Dead:
             removeAllActions()
             let gameAtlas = SKTextureAtlas(named: "characteranimations")
-            texture = gameAtlas.textureNamed("monkey_dead.png")
+            texture = gameAtlas.textureNamed(deadTextureName)
         
         case .Idle:
             break
