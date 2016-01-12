@@ -61,7 +61,7 @@ class GameScene: SKScene {
         background2.position = CGPoint(x: background2.size.width + background2.size.width / 2, y: size.height / 2)
         background2.zPosition = -1
         
-        monkey = Monkey.monkey() as! Monkey
+        monkey = Monkey.shareInstance
         monkey.position = CGPoint(x: 0.125 * size.width, y: 0.260 * size.height)
         
         distanceLabel = SKLabelNode(fontNamed: "Arial")

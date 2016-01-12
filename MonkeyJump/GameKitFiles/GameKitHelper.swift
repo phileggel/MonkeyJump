@@ -101,7 +101,8 @@ class GameKitHelper: NSObject {
     
     private func notifyAskForAuthentication() {
         if let _ = authenticationViewController {
-            NSNotificationCenter.defaultCenter().postNotificationName(GameKitHelper.presentAuthenticationViewController, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(GameKitHelper.presentAuthenticationViewController,
+                object: nil)
         }
     }
     
@@ -212,7 +213,9 @@ class GameKitHelper: NSObject {
     
     
     /// Share Score on Social Networks
-    func presentShareScoreControllerFromViewController(controller: UIViewController, score: Int64, leaderBoardID: String) {
+    func presentShareScoreControllerFromViewController(controller: UIViewController, score: Int64,
+        leaderBoardID: String)
+    {
         
         let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
         gkScore.value = score

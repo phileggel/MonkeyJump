@@ -3,7 +3,7 @@
 //  MonkeyJump
 //
 //  Original Objective-C Created by Kauserali on 18/11/13
-//  Translated to Swift by Phil Eggel on 01/04/16
+//  Translated to Swift by Phil Eggel on 04/01/16
 //  Copyright © 2016 PhilEagleDev.com. All rights reserved.
 //
 
