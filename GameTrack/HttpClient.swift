@@ -14,7 +14,7 @@ typealias GameTrackRecordPostServerResponse = (error: NSError?) -> ()
 class HttpClient {
     static let sharedInstance = HttpClient()
     
-    private static let baseURL = "http://www.phileagledev.com"
+    private static let baseURL = "http://www.phileagledev.com/portfolio/server/monkeyjump/ChallengesAPI.php"
     private static let jumpArrayKey = "JumpArray"
     private static let hitArrayKey = "HitArray"
     private static let randomSeedKey = "RandomSeed"
@@ -76,7 +76,7 @@ class HttpClient {
                 HttpClient.hitArrayKey: gameTrackRecord.hitTimingSinceStartOfGame
             ]
             
-            let challengeURL = NSURL(string: "\(HttpClient.baseURL)?challengeId=\(challengeID)")!
+            let challengeURL = NSURL(string: "\(HttpClient.baseURL)?challengeID=\(challengeID)")!
             let request = NSMutableURLRequest(
                 URL: challengeURL,
                 cachePolicy: .ReloadIgnoringLocalCacheData,
@@ -90,7 +90,19 @@ class HttpClient {
                 request.HTTPBody = jsonData
                 let session = NSURLSession.sharedSession().dataTaskWithRequest(request) {
                     (data, response, error) -> Void in
-                        completion(error: error)
+                    
+                    if let responseData = data {
+                        if let
+                            jsonData = try? NSJSONSerialization.JSONObjectWithData(responseData, options: []),
+                            answer = jsonData as? NSDictionary,
+                            message = answer["__message"] as? String {
+                                print("ChallengesAPI message: \(message)")
+                        } else {
+                            print("ChallengesAPI anwser message: no usefull message received")
+                        }
+                    }
+                    
+                    completion(error: error)
                 }
                 session.resume()
             } catch let error as NSError {

@@ -32,8 +32,9 @@ class GameOverViewController: UIViewController {
         self.score = score
         self.gameTrackRecord = gameTrackRecord
         
-        scoreLabel.text = "YOUR SCORE: \(score)"
-        
+        if let scoreLabel = scoreLabel {
+            scoreLabel.text = "YOUR SCORE: \(score)"
+        }
     }
     
     private var spinner: UIActivityIndicatorView!
