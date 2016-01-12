@@ -12,7 +12,7 @@
 //  Copyright © 2016 PhilEagleDev.com. All rights reserved.
 //
 
-import Foundation
+import GameKit
 
 class MonkeyGameKitHelper {
     
@@ -47,6 +47,23 @@ class MonkeyGameKitHelper {
             }
             
         }
+    }
+    
+    static func presentChallengeComposeControllerFromViewController(controller:UIViewController, leaderBoardID: String,
+        withSelectedPlayers players: [GKPlayer], withScore score: Int64, message: String,
+        gameTrackRecord: GameTrackRecord) {
+        
+            let challengeID = UInt64(arc4random_uniform(10000)) + 1
+            HttpClient.sharedInstance.postGameTrackRecordDetails(gameTrackRecord, challengeID: challengeID) { (error) -> () in
+                if let error = error {
+                    print("Failed to send track record to server: \(error.localizedDescription)")
+                }
+                else {
+                    GameKitHelper.sharedInstance.presentChallengeComposeControllerFromViewController(controller,
+                        leaderBoardID: leaderBoardID, withSelectedPlayers: players, withScore: score,
+                        message: message, context: challengeID)
+                }
+            }
     }
 
 }

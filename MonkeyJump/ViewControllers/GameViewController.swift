@@ -32,9 +32,9 @@ class GameViewController: UIViewController {
 
 extension GameViewController: GameSceneProtocol {
     
-    func gameOverWithScore(score: Int64) {
+    func gameOverWithScore(score: Int64, gameTrackRecord: GameTrackRecord) {
         let gameOverViewController = storyboard!.instantiateViewControllerWithIdentifier(GameOverViewController.storyboardID) as! GameOverViewController
-        gameOverViewController.score = score
+        gameOverViewController.setScore(score, gameTrackRecord: gameTrackRecord)
         navigationController?.pushViewController(gameOverViewController, animated: false)
     }
     

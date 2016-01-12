@@ -8,8 +8,8 @@
 
 import Foundation
 
-typealias GameTrackingGetServerResponse = (response: GameTracking?, error: NSError?) -> ()
-typealias GameTrackingPostServerResponse = (error: NSError?) -> ()
+typealias GameTrackRecordGetServerResponse = (response: GameTrackRecord?, error: NSError?) -> ()
+typealias GameTrackRecordPostServerResponse = (error: NSError?) -> ()
 
 class HttpClient {
     static let sharedInstance = HttpClient()
@@ -19,8 +19,8 @@ class HttpClient {
     private static let hitArrayKey = "HitArray"
     private static let randomSeedKey = "RandomSeed"
     
-    func getGameTrackingDetailsForKey(key: UInt64,
-        completionHandler completion: GameTrackingGetServerResponse) {
+    func getGameTrackRecordDetailsForKey(key: UInt64,
+        completionHandler completion: GameTrackRecordGetServerResponse) {
             
             let challengeURL = NSURL(string: "\(HttpClient.baseURL)?challengeId=\(key)")!
             let request = NSURLRequest(URL: challengeURL)
@@ -37,22 +37,22 @@ class HttpClient {
                         let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: [])
                         
                         if let
-                            gameTrackingJSON = jsonData as? NSDictionary,
-                            jumpArray = gameTrackingJSON[HttpClient.jumpArrayKey] as? [NSTimeInterval],
-                            hitArray = gameTrackingJSON[HttpClient.hitArrayKey] as? [NSTimeInterval],
-                            randomSeedString = gameTrackingJSON[HttpClient.randomSeedKey] as? String,
+                            gameTrackRecordJSON = jsonData as? NSDictionary,
+                            jumpArray = gameTrackRecordJSON[HttpClient.jumpArrayKey] as? [NSTimeInterval],
+                            hitArray = gameTrackRecordJSON[HttpClient.hitArrayKey] as? [NSTimeInterval],
+                            randomSeedString = gameTrackRecordJSON[HttpClient.randomSeedKey] as? String,
                             randomSeed = UInt32(randomSeedString) {
                                 
-                                let gameTracking = GameTracking()
-                                gameTracking.jumpTimingSinceStartOfGame = jumpArray
-                                gameTracking.hitTimingSinceStartOfGame = hitArray
-                                gameTracking.randomSeed = randomSeed
+                                let gameTrackRecord = GameTrackRecord()
+                                gameTrackRecord.jumpTimingSinceStartOfGame = jumpArray
+                                gameTrackRecord.hitTimingSinceStartOfGame = hitArray
+                                gameTrackRecord.randomSeed = randomSeed
                                 
-                                completion(response: gameTracking, error: nil)
+                                completion(response: gameTrackRecord, error: nil)
                         }
                         else {
                             throw NSError(domain: "com.phileagledev.MonkeyJump", code: 0,
-                                userInfo: [NSLocalizedDescriptionKey: "Malformed JSON GameTracking file."])
+                                userInfo: [NSLocalizedDescriptionKey: "Malformed JSON GameTrackRecord file."])
                         }
                         
                     } catch let error as NSError {
@@ -67,13 +67,13 @@ class HttpClient {
             
     }
     
-    func postGameTrackingDetails(gameTracking: GameTracking, challengeID: Int,
-        completionHandler completion: GameTrackingPostServerResponse) {
+    func postGameTrackRecordDetails(gameTrackRecord: GameTrackRecord, challengeID: UInt64,
+        completionHandler completion: GameTrackRecordPostServerResponse) {
             
             let params = [
-                HttpClient.randomSeedKey: String(gameTracking.randomSeed),
-                HttpClient.jumpArrayKey: gameTracking.jumpTimingSinceStartOfGame,
-                HttpClient.hitArrayKey: gameTracking.hitTimingSinceStartOfGame
+                HttpClient.randomSeedKey: String(gameTrackRecord.randomSeed),
+                HttpClient.jumpArrayKey: gameTrackRecord.jumpTimingSinceStartOfGame,
+                HttpClient.hitArrayKey: gameTrackRecord.hitTimingSinceStartOfGame
             ]
             
             let challengeURL = NSURL(string: "\(HttpClient.baseURL)?challengeId=\(challengeID)")!

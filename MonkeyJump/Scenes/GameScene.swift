@@ -14,7 +14,7 @@
 import SpriteKit
 
 protocol GameSceneProtocol: class {
-    func gameOverWithScore(score: Int64)
+    func gameOverWithScore(score: Int64, gameTrackRecord: GameTrackRecord)
 }
     
 // MARK: -
@@ -47,10 +47,10 @@ class GameScene: SKScene {
     private var difficultyMeasure: CGFloat = 1
     
     
-    // MARK: - GameTracking Properties
+    // MARK: - GameTrackRecord Properties
     private var startTime: NSTimeInterval
     private var randomSeed: UInt32
-    private var gameTracking: GameTracking
+    private var gameTrackRecord: GameTrackRecord
     
     override init(size: CGSize) {
         
@@ -86,8 +86,8 @@ class GameScene: SKScene {
         // as time_t (Int typealias)
         randomSeed = UInt32(time(nil))
         srand(randomSeed)
-        gameTracking = GameTracking()
-        gameTracking.randomSeed = randomSeed
+        gameTrackRecord = GameTrackRecord()
+        gameTrackRecord.randomSeed = randomSeed
         
         super.init(size: size)
         
@@ -198,7 +198,7 @@ class GameScene: SKScene {
                         
                         let hitDate = NSDate()
                         let hitTimeSinceStart = hitDate.timeIntervalSince1970 - startTime
-                        gameTracking.addHitTime(hitTimeSinceStart)
+                        gameTrackRecord.addHitTime(hitTimeSinceStart)
                         
                         if monkey.lives <= 0 {
                             
@@ -242,7 +242,7 @@ class GameScene: SKScene {
             
             let jumpDate = NSDate()
             let jumpTimeSinceStart = jumpDate.timeIntervalSince1970 - startTime
-            gameTracking.addJumpTime(jumpTimeSinceStart)
+            gameTrackRecord.addJumpTime(jumpTimeSinceStart)
             
             runAction(jumpSound)
             monkey.state = .Jumping
@@ -264,7 +264,7 @@ class GameScene: SKScene {
         
         GameKitHelper.sharedInstance.submitScore(Int64(distance), leaderBoardID: AppConstant.highScoreLeaderBoardID)
         MonkeyGameKitHelper.reportAchievementsForDistance(Int64(distance))
-        gameSceneDelegate?.gameOverWithScore(Int64(distance))
+        gameSceneDelegate?.gameOverWithScore(Int64(distance), gameTrackRecord: gameTrackRecord)
 
     }
 

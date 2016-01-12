@@ -37,7 +37,7 @@ extension GameKitHelperProtocol {
 
 // MARK: -
 class GameKitHelper: NSObject {
-
+    
     // MARK: - class constants
     static let presentAuthenticationViewController = "present_authentication_view_controller"
     static let sharedInstance = GameKitHelper() // Singleton Pattern
@@ -64,7 +64,7 @@ class GameKitHelper: NSObject {
     
     // This property holds Game Center achievements
     private(set) var achievements: [String: GKAchievement]?
-
+    
     
     // MARK: - private properties
     private var gameCenterFeaturesEnabled: Bool = false
@@ -96,7 +96,7 @@ class GameKitHelper: NSObject {
             }
             
         }
-
+        
     }
     
     private func notifyAskForAuthentication() {
@@ -189,7 +189,7 @@ class GameKitHelper: NSObject {
             GKAchievement.reportAchievements([achievement], withCompletionHandler: { [weak self] (error) -> Void in
                 self?.setLastError(error)
                 self?.delegate?.onAchievementsReported(achievement)
-            })
+                })
         }
     }
     
@@ -226,7 +226,7 @@ class GameKitHelper: NSObject {
         // the activityViewController is a highlevel interface which provide the ability to share items
         // but also to interact with other installed applications
         // In the later case we may receive modified datas through the returnedItems array
-        // 
+        //
         // activityViewController is weak to prevent owning cycle. The owner will be the current controller
         // if it is dismiss, the activityViewController should be dismissed by its parent
         shareScoreViewController.completionWithItemsHandler = { [weak shareScoreViewController]
@@ -239,7 +239,7 @@ class GameKitHelper: NSObject {
         
         controller.presentViewController(shareScoreViewController, animated: true, completion: nil)
     }
- 
+    
     
     /// Challenge Score Features
     func findScoresOfFriendsToChallenge(leaderBoardID: String) {
@@ -258,7 +258,7 @@ class GameKitHelper: NSObject {
             guard let scores = scores where error == nil else {
                 return
             }
-                
+            
             var friendsScores: [GKScore]
             if !strongSelf.includeLocalPlayerScore {
                 friendsScores = scores.filter({ (score) -> Bool in
@@ -268,25 +268,26 @@ class GameKitHelper: NSObject {
             else {
                 friendsScores = scores
             }
-                
+            
             strongSelf.delegate?.onScoreOfFriendsToChallengeListReceived(friendsScores)
             
         }
     }
     
     func presentChallengeComposeControllerFromViewController(controller:UIViewController, leaderBoardID: String,
-        withSelectedPlayers players: [GKPlayer], withScore score: Int64, message: String)
-    {
-        let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
-        gkScore.value = score
-        
-        let challengeComposeController = gkScore.challengeComposeControllerWithMessage(message, players: players) {
-            (composeController, didIssueChallenge, sentPlayerIDs) -> Void in
-            composeController.dismissViewControllerAnimated(true, completion: nil)
-        }
-        
-        controller.presentViewController(challengeComposeController, animated: true, completion: nil)
-        
+        withSelectedPlayers players: [GKPlayer], withScore score: Int64, message: String, context: UInt64 = 0) {
+            
+            let gkScore = GKScore(leaderboardIdentifier: leaderBoardID)
+            gkScore.value = score
+            gkScore.context = context
+            
+            let challengeComposeController = gkScore.challengeComposeControllerWithMessage(message, players: players) {
+                (composeController, didIssueChallenge, sentPlayerIDs) -> Void in
+                composeController.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            controller.presentViewController(challengeComposeController, animated: true, completion: nil)
+            
     }
 }
 

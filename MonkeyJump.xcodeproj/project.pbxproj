@@ -12,7 +12,7 @@
 		4A1E10CF1C44F11800D725A0 /* GameElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10CE1C44F11800D725A0 /* GameElement.swift */; };
 		4A1E10D31C45085E00D725A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10D21C45085E00D725A0 /* AppDelegate.swift */; };
 		4A1E10D51C45155400D725A0 /* GhostMonkey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A1E10D41C45155400D725A0 /* GhostMonkey.plist */; };
-		4A1E10D91C45174100D725A0 /* GameTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10D81C45174100D725A0 /* GameTracking.swift */; };
+		4A1E10D91C45174100D725A0 /* GameTrackRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10D81C45174100D725A0 /* GameTrackRecord.swift */; };
 		4A1E10DD1C4521DA00D725A0 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10DC1C4521DA00D725A0 /* HttpClient.swift */; };
 		4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E271C286C0A0045C13C /* Constant.swift */; };
 		4A2B2E2A1C286D4E0045C13C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E291C286D4E0045C13C /* GameScene.swift */; };
@@ -69,7 +69,7 @@
 		4A1E10CE1C44F11800D725A0 /* GameElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameElement.swift; sourceTree = "<group>"; };
 		4A1E10D21C45085E00D725A0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A1E10D41C45155400D725A0 /* GhostMonkey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GhostMonkey.plist; sourceTree = "<group>"; };
-		4A1E10D81C45174100D725A0 /* GameTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTracking.swift; sourceTree = "<group>"; };
+		4A1E10D81C45174100D725A0 /* GameTrackRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTrackRecord.swift; sourceTree = "<group>"; };
 		4A1E10DC1C4521DA00D725A0 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		4A2B2E271C286C0A0045C13C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4A2B2E291C286D4E0045C13C /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		4A1E10D71C4516C000D725A0 /* GameTrack */ = {
 			isa = PBXGroup;
 			children = (
-				4A1E10D81C45174100D725A0 /* GameTracking.swift */,
+				4A1E10D81C45174100D725A0 /* GameTrackRecord.swift */,
 				4A1E10DC1C4521DA00D725A0 /* HttpClient.swift */,
 			);
 			path = GameTrack;
@@ -440,7 +440,7 @@
 				4AF7D1331C29A2D000A2A90D /* GameOverViewController.swift in Sources */,
 				4A1E10CD1C44EA6900D725A0 /* Monkey.swift in Sources */,
 				4A1E10CB1C44EA1400D725A0 /* GhostMonkey.swift in Sources */,
-				4A1E10D91C45174100D725A0 /* GameTracking.swift in Sources */,
+				4A1E10D91C45174100D725A0 /* GameTrackRecord.swift in Sources */,
 				4ACDC77B1C2821DD00DB6FF6 /* MonkeyJumpNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

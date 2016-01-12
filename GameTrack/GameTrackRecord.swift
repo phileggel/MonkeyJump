@@ -1,5 +1,5 @@
 //
-//  GameTrackingObject.swift
+//  GameTrackRecord.swift
 //  MonkeyJump
 //
 //  Created by philippe eggel on 12/01/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GameTracking: NSObject {
+class GameTrackRecord: NSObject {
     var randomSeed: UInt32
     var jumpTimingSinceStartOfGame: [NSTimeInterval]
     var hitTimingSinceStartOfGame: [NSTimeInterval]
@@ -35,9 +35,9 @@ class GameTracking: NSObject {
     }
 }
 
-extension GameTracking: NSCopying {
+extension GameTrackRecord: NSCopying {
     func copyWithZone(zone: NSZone) -> AnyObject {
-        let copy = GameTracking()
+        let copy = GameTrackRecord()
         copy.jumpTimingSinceStartOfGame = self.jumpTimingSinceStartOfGame
         copy.hitTimingSinceStartOfGame = self.hitTimingSinceStartOfGame
         copy.randomSeed = self.randomSeed

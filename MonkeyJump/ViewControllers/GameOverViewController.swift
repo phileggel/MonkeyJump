@@ -25,13 +25,17 @@ class GameOverViewController: UIViewController {
 
     
     // MARK: - private properties
-    var score: Int64 = 0 {
-        didSet {
-            if let _ = scoreLabel {
-                scoreLabel.text = "YOUR SCORE: \(score)"
-            }
-        }
+    private var gameTrackRecord: GameTrackRecord!
+    private var score: Int64!
+    
+    func setScore(score: Int64, gameTrackRecord: GameTrackRecord) {
+        self.score = score
+        self.gameTrackRecord = gameTrackRecord
+        
+        scoreLabel.text = "YOUR SCORE: \(score)"
+        
     }
+    
     private var spinner: UIActivityIndicatorView!
     
     // MARK: - ViewController Life Cycle
@@ -81,7 +85,9 @@ extension GameOverViewController: GameKitHelperProtocol {
             }
         }
         
-        GameKitHelper.sharedInstance.presentChallengeComposeControllerFromViewController(self, leaderBoardID: AppConstant.highScoreLeaderBoardID, withSelectedPlayers: players, withScore: score, message: "Beat this!")
+        MonkeyGameKitHelper.presentChallengeComposeControllerFromViewController(self,
+            leaderBoardID: AppConstant.highScoreLeaderBoardID, withSelectedPlayers: players, withScore: score,
+            message: "Beat this!", gameTrackRecord: gameTrackRecord)
         
     }
 
