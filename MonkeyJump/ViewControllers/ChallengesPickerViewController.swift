@@ -56,8 +56,8 @@ class ChallengesPickerViewController: UIViewController {
         
         let gameKitHelper = GameKitHelper.sharedInstance
         gameKitHelper.delegate = nil
-        if let challengesCanceledBlock = challengesCanceledBlock {
-            challengesCanceledBlock()
+        if let challengeCanceledBlock = challengeCanceledBlock {
+            challengeCanceledBlock()
         }
     }
 }

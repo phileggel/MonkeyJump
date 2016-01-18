@@ -32,11 +32,11 @@ class GameScene: SKScene {
     // MARK: - public properties
     weak var gameSceneDelegate: GameSceneProtocol?
     
-    
     // MARK: - private properties
     private var background1, background2: SKSpriteNode
     private var distanceLabel, livesLabel: SKLabelNode
     private var monkey: Monkey
+    private var ghostMonkey: GhostMonkey?
     private var jumpSound: SKAction
     
     private var jumping = false
@@ -51,6 +51,15 @@ class GameScene: SKScene {
     private var startTime: NSTimeInterval
     private var randomSeed: UInt32
     private var gameTrackRecord: GameTrackRecord
+    var challengerGameTrackRecord: GameTrackRecord? {
+        didSet {
+            if let challengerGameTrackRecord = challengerGameTrackRecord {
+                self.randomSeed = challengerGameTrackRecord.randomSeed
+                srand(randomSeed)
+                gameTrackRecord.randomSeed = randomSeed
+            }
+        }
+    }
     
     override init(size: CGSize) {
         
@@ -107,11 +116,29 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
+        
+        if let _ = challengerGameTrackRecord {
+            ghostMonkey = GhostMonkey(imageNamed: "monkey_ghost_run1.png")
+            ghostMonkey?.position = CGPoint(x: 0.125 * size.width, y: 0.271 * size.height)
+            addChild(ghostMonkey!)
+            ghostMonkey?.state = .Walking
+        }
+        
         let startDate = NSDate()
         startTime = startDate.timeIntervalSince1970
     }
     
     override func update(currentTime: NSTimeInterval) {
+        
+        if (ghostMonkey?.state ?? .Dead) != .Dead {
+            updateGhostMonkeyMoves()
+        }
+        
+        if (ghostMonkey?.lives ?? 1) == 0 {
+            ghostMonkey?.state = .Dead
+            ghostMonkey?.removeFromParent()
+        }
+        
         if monkey.state == .Dead {
             return
         }
@@ -214,8 +241,8 @@ class GameScene: SKScene {
                         runAction(SKAction.playSoundFileNamed("hurt.mp3", waitForCompletion: false))
                         
                         let fadeout = SKAction.fadeOutWithDuration(0.187)
-                        let fadeint = fadeout.reversedAction()
-                        let blinkAnimation = SKAction.sequence([fadeout, fadeint])
+                        let fadein = fadeout.reversedAction()
+                        let blinkAnimation = SKAction.sequence([fadeout, fadein])
                         let repeatBlink = SKAction.repeatAction(blinkAnimation, count: 4)
                         
                         monkey.runAction(repeatBlink, completion: { [weak self] () -> Void in
@@ -230,6 +257,56 @@ class GameScene: SKScene {
                 
             }
             
+        }
+        
+    }
+    
+    func updateGhostMonkeyMoves() {
+        
+        let date = NSDate()
+        let currentTimeSinceStart = date.timeIntervalSince1970 - startTime
+        
+        var jumpTimingToRemoves: [Int] = []
+        for (index, value) in challengerGameTrackRecord!.jumpTimingSinceStartOfGame.enumerate() {
+            if value <= currentTimeSinceStart {
+                jumpTimingToRemoves.append(index)
+                ghostMonkey!.state = .Jumping
+
+                let jumpAction = SKAction.moveByX(0, y: 120, duration: 0.6)
+                let reverse = jumpAction.reversedAction()
+                let action = SKAction.sequence([jumpAction, reverse])
+                ghostMonkey!.runAction(action, completion: { [weak self] () -> Void in
+                    self?.ghostMonkey!.state = .Walking
+                })
+                break
+            }
+        }
+        
+        for index in jumpTimingToRemoves { // O(nb of timingToRemove)
+            challengerGameTrackRecord!.jumpTimingSinceStartOfGame.removeAtIndex(index) // O(nb of timingValue)
+        }
+        
+        var hitTimingToRemove: [Int] = []
+        for (index, value) in challengerGameTrackRecord!.hitTimingSinceStartOfGame.enumerate() {
+            if value <= currentTimeSinceStart {
+                hitTimingToRemove.append(index)
+                ghostMonkey!.state = .Jumping
+                
+                let fadeout = SKAction.fadeOutWithDuration(0.187)
+                let fadein = fadeout.reversedAction()
+                let blinkAnimation = SKAction.sequence([fadeout, fadein])
+                let repeatBlink = SKAction.repeatAction(blinkAnimation, count: 4)
+
+                ghostMonkey!.runAction(repeatBlink, completion: { [weak self] () -> Void in
+                    self?.ghostMonkey!.state = .Walking
+                    self?.ghostMonkey!.lives -= 1
+                    })
+                break
+            }
+        }
+        
+        for index in hitTimingToRemove { // O(nb of timingToRemove)
+            challengerGameTrackRecord!.hitTimingSinceStartOfGame.removeAtIndex(index) // O(nb of timingValue)
         }
         
     }

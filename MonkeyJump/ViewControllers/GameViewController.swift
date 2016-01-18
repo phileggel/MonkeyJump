@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
             let scene = GameScene(size: skView.bounds.size)
             scene.gameSceneDelegate = self
             scene.scaleMode = .AspectFill
+            scene.challengerGameTrackRecord = gameTrackRecord
             
             skView.presentScene(scene)
         }
