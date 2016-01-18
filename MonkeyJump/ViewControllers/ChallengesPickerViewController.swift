@@ -8,16 +8,15 @@
 
 import GameKit
 
-typealias ChallengesCanceledBlock = () -> ()
+typealias ChallengeCanceledBlock = () -> ()
 typealias ChallengeSelectedBlock = (GKScoreChallenge) -> ()
 
 class ChallengesPickerViewController: UIViewController {
-    
     private static let challengeKey = "ChallengeKey"
     private static let playerKey = "PlayerKey"
     
     private var dataSource: [String: [String: AnyObject]]
-    var challengesCanceledBlock: ChallengesCanceledBlock?
+    var challengeCanceledBlock: ChallengeCanceledBlock?
     var challengeSelectedBlock: ChallengeSelectedBlock?
     
     @IBOutlet weak var tableView: UITableView!

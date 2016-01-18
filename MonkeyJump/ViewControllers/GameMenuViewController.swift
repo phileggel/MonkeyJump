@@ -6,7 +6,7 @@
 //  Copyright © 2015 PhilEagleDev.com. All rights reserved.
 //
 
-import UIKit
+import GameKit
 
 class GameMenuViewController: UIViewController {
 
@@ -33,6 +33,33 @@ class GameMenuViewController: UIViewController {
     }
     
     @IBAction func challengesReceivedButtonPressed(sender: UIButton) {
+        let challengeViewController = ChallengesPickerViewController(nibName: "ChallengesPickerViewController", bundle: nil)
         
+        challengeViewController.challengeCanceledBlock = {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        challengeViewController.challengeSelectedBlock = { (challenge: GKScoreChallenge) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+            let gameViewController = self.storyboard?.instantiateViewControllerWithIdentifier(GameViewController.storyboardID) as! GameViewController
+            if challenge.score!.context != 0 {
+                HttpClient.sharedInstance.getGameTrackRecordDetailsForKey(challenge.score!.context, completionHandler: { (response, error) -> () in
+                    if error == nil {
+                        gameViewController.gameTrackRecord = response
+                        self.navigationController?.pushViewController(gameViewController, animated: true)
+                    }
+                    else {
+                        self.navigationController?.pushViewController(gameViewController, animated: true)
+                    }
+                })
+                
+            } else {
+                self.navigationController?.pushViewController(gameViewController, animated: true)
+            }
+        }
+        
+        let nc = UINavigationController(rootViewController: challengeViewController)
+        presentViewController(nc, animated: true, completion: nil)
     }
 }

@@ -10,6 +10,9 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
+    static let storyboardID = "GameViewController"
+    var gameTrackRecord: GameTrackRecord?
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
