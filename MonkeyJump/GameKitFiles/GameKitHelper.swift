@@ -23,6 +23,8 @@ protocol GameKitHelperProtocol: class {
     func onAchievementsReported(achievement: GKAchievement)
     func onScoreSubmitted(success: Bool)
     func onScoreOfFriendsToChallengeListReceived(scores: [GKScore])
+    func onChallengesReceived(challenges: [GKChallenge])
+    func onPlayerInfoReceived(players: [GKPlayer])
 }
 
 extension GameKitHelperProtocol {
@@ -32,6 +34,8 @@ extension GameKitHelperProtocol {
     func onAchievementsReported(achievement: GKAchievement) {}
     func onScoreSubmitted(success: Bool) {}
     func onScoreOfFriendsToChallengeListReceived(scores: [GKScore]) {}
+    func onChallengesReceived(challenges: [GKChallenge]) {}
+    func onPlayerInfoReceived(players: [GKPlayer]) {}
 }
 
 
@@ -289,6 +293,40 @@ class GameKitHelper: NSObject {
             controller.presentViewController(challengeComposeController, animated: true, completion: nil)
             
     }
+    
+    // Challenges Handling
+    func loadChallenges() {
+        guard gameCenterFeaturesEnabled else {
+            print("Player not authenticated!")
+            return
+        }
+        
+        GKChallenge.loadReceivedChallengesWithCompletionHandler { [weak self] (challenges, error) -> Void in
+            self?.setLastError(error)
+            if let challenges = challenges where error == nil {
+                self?.delegate?.onChallengesReceived(challenges)
+            }
+        }
+    }
+    func loadPlayerInfo(playerIdentifierList: [String]) {
+        guard gameCenterFeaturesEnabled else {
+            print("Player not authenticated!")
+            return
+        }
+        
+        if playerIdentifierList.count > 0 {
+            GKPlayer.loadPlayersForIdentifiers(playerIdentifierList, withCompletionHandler: {
+                [weak self] (players, error) -> Void in
+                
+                self?.setLastError(error)
+                if let players = players {
+                    self?.delegate?.onPlayerInfoReceived(players)
+                }
+            })
+        }
+    }
+    
+    
 }
 
 // MARK: - GKGameCenterControllerDelegate

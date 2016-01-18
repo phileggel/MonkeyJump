@@ -16,6 +16,8 @@
 		4A1E10DD1C4521DA00D725A0 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E10DC1C4521DA00D725A0 /* HttpClient.swift */; };
 		4A2B2E281C286C0B0045C13C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E271C286C0A0045C13C /* Constant.swift */; };
 		4A2B2E2A1C286D4E0045C13C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B2E291C286D4E0045C13C /* GameScene.swift */; };
+		4A8052F61C4D29D7000D914E /* ChallengesPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8052F41C4D29D7000D914E /* ChallengesPickerViewController.xib */; };
+		4A8052F81C4D2C16000D914E /* ChallengesPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8052F71C4D2C16000D914E /* ChallengesPickerViewController.swift */; };
 		4AA196E31C3A923000E6FB9D /* Achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA196E21C3A923000E6FB9D /* Achievements.plist */; };
 		4AA196E51C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA196E41C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift */; };
 		4AA196E71C3ABE2300E6FB9D /* Croc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA196E61C3ABE2300E6FB9D /* Croc.swift */; };
@@ -73,6 +75,8 @@
 		4A1E10DC1C4521DA00D725A0 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		4A2B2E271C286C0A0045C13C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4A2B2E291C286D4E0045C13C /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		4A8052F41C4D29D7000D914E /* ChallengesPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengesPickerViewController.xib; sourceTree = "<group>"; };
+		4A8052F71C4D2C16000D914E /* ChallengesPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesPickerViewController.swift; sourceTree = "<group>"; };
 		4AA196E21C3A923000E6FB9D /* Achievements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Achievements.plist; sourceTree = "<group>"; };
 		4AA196E41C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonkeyGameKitHelper.swift; sourceTree = "<group>"; };
 		4AA196E61C3ABE2300E6FB9D /* Croc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Croc.swift; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 		61D2ABCC1839333A00941988 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4A8052F71C4D2C16000D914E /* ChallengesPickerViewController.swift */,
+				4A8052F41C4D29D7000D914E /* ChallengesPickerViewController.xib */,
 				4ACDC77A1C2821DC00DB6FF6 /* MonkeyJumpNavigationController.swift */,
 				4AA3AAF11C28580200BD3B6F /* GameMenuViewController.swift */,
 				4AF7D1301C299F8800A2A90D /* GameViewController.swift */,
@@ -405,6 +411,7 @@
 				61D2AB9D1839304200941988 /* InfoPlist.strings in Resources */,
 				61D2ABB01839304200941988 /* Images.xcassets in Resources */,
 				61AE8C6F183A55B0005BA2EB /* Snake.plist in Resources */,
+				4A8052F61C4D29D7000D914E /* ChallengesPickerViewController.xib in Resources */,
 				61D2ABA61839304200941988 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +441,7 @@
 				4AA196E91C3AC07600E6FB9D /* HedgeHog.swift in Sources */,
 				4ACDC7791C280D6D00DB6FF6 /* GameKitHelper.swift in Sources */,
 				4AA196E51C3AAA7F00E6FB9D /* MonkeyGameKitHelper.swift in Sources */,
+				4A8052F81C4D2C16000D914E /* ChallengesPickerViewController.swift in Sources */,
 				4AA3AAF21C28580200BD3B6F /* GameMenuViewController.swift in Sources */,
 				4AF7D1311C299F8800A2A90D /* GameViewController.swift in Sources */,
 				4A1E10D31C45085E00D725A0 /* AppDelegate.swift in Sources */,
